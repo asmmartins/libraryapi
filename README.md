@@ -10,18 +10,18 @@ A definição do contrato, antes do desenvolvimento, faz com que podemos trabalhar
 Pensando na distribuição desses módulos de uma solução teríamos:
 
 * **src** - Diretório raiz que armazena todos os códigos de abstrações e implementações.
-  * **src/School.Api** - Módulo de apresentação, recebe a requisição e delega o processamento para um "comando" ou "consulta".
-  * **src/School.Application** - Contém os contratos dos casos de uso, que podem ser entendidos por interfaces e objetos de transferência.
-  * **src/School.UseCases** - A implementações dos casos de uso, sejam de comandos ou consultas.
-  * **src/School.Domain** - Responsável por conter os modelos de domínio (regras de negócios), relacionando-os e com enfase aos seus comportamentos.
-  * **src/School.Repositories** - Implementações dos repositórios.
-  * **src/School.Infra.IoC** - O conceito da inversão de controle, através da injeção de dependências, seria configurado no módulo de IoC.
+  * **src/Library.Api** - Módulo de apresentação, recebe a requisição e delega o processamento para um "comando" ou "consulta".
+  * **src/Library.Application** - Contém os contratos dos casos de uso, que podem ser entendidos por interfaces e objetos de transferência.
+  * **src/Library.UseCases** - A implementações dos casos de uso, sejam de comandos ou consultas.
+  * **src/Library.Domain** - Responsável por conter os modelos de domínio (regras de negócios), relacionando-os e com enfase aos seus comportamentos.
+  * **src/Library.Repositories** - Implementações dos repositórios.
+  * **src/Library.Infra.IoC** - O conceito da inversão de controle, através da injeção de dependências, seria configurado no módulo de IoC.
 
 * **tests** - Diretório inicial de todos os testes automatizados.
-  * **tests/School.Tests.Unit** - Testes unitários, com cada namespace separado para um módulo: **School.Tests.Unit.UseCases**, **School.Tests.Unit.Api** , **School.Tests.Unit.Repositores** e **School.Tests.Unit.Domain**.
-  * **tests/School.Tests.Integration** - Testes integrados, onde as dependências estariam acopladas. Seguindo a estrutura de diretórios similar ao item anterior.
-  * **tests/School.Tests.Api** - Construções dos testes de API's, subindo a aplicação através do TestHost.
-  * **tests/School.Tests.EndToEnd** - São requisições e testes feitos no Postman.
+  * **tests/Library.Tests.Unit** - Testes unitários, com cada namespace separado para um módulo: **Library.Tests.Unit.UseCases**, **Library.Tests.Unit.Api** , **Library.Tests.Unit.Repositores** e **Library.Tests.Unit.Domain**.
+  * **tests/Library.Tests.Integration** - Testes integrados, onde as dependências estariam acopladas. Seguindo a estrutura de diretórios similar ao item anterior.
+  * **tests/Library.Tests.Api** - Construções dos testes de API's, subindo a aplicação através do TestHost.
+  * **tests/Library.Tests.EndToEnd** - São requisições e testes feitos no Postman.
 
 #### Setup
 

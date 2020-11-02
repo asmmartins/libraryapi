@@ -11,7 +11,7 @@ var outPackDir = Argument("outpackdir", "./artifacts/");
 // PREPARATION
 //////////////////////////////////////////////////////////////////////
 
-const string PROJECT_NAME = "School";
+const string PROJECT_NAME = "Library";
 const string PROJECT_SOLUTION = PROJECT_NAME + ".sln";
 const string TEST_PROJECT_DIRECTORY = "./tests/" + PROJECT_NAME;
 const string TEST_PROJECT_DIRECTORY_UNIT = TEST_PROJECT_DIRECTORY + ".Tests.Unit";

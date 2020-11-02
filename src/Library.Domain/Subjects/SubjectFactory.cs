@@ -6,12 +6,12 @@ namespace Library.Domain.Subjects
 {
     public partial class Subject : IAggregateRoot
     {
-        public static Subject Create(string name)
+        public static Subject Create(string description)
         {
             var subject = new Subject()
             {
                 Id = Guid.NewGuid(),
-                Name = name?.Trim(),                
+                Description = description?.Trim(),                
             };
 
             Validate(subject);

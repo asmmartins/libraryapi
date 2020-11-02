@@ -9,24 +9,25 @@ namespace Library.Tests.Unit.Domain.Subjects
     public class SubjectsTests
     {
         [Theory]
-        [InlineData(null, "'Name' não pode ser nulo.")]
-        [InlineData("", "'Name' deve ser informado.")]
-        [InlineData("012345678901234567890", "'Name' deve ser menor ou igual a 20 caracteres. Você digitou 21 caracteres.")]
-        public void Shouldnot_CreatSubject_WithNameInvalid(string name, string errorMessage)
+        [InlineData(null, "'Description' não pode ser nulo.")]
+        [InlineData("", "'Description' deve ser informado.")]
+        [InlineData("012345678901234567890", "'Description' deve ser menor ou igual a 20 caracteres. Você digitou 21 caracteres.")]
+        public void Shouldnot_CreatSubject_WithNameInvalid(string description, string errorMessage)
         {
-            ValidationException ex = Assert.Throws<ValidationException>(() => SubjectDomain.Subject.Create(name));
+            ValidationException ex = Assert.Throws<ValidationException>(() => SubjectDomain.Subject.Create(description));
             ex.AssertErrorMessage(errorMessage);
         }
 
         [Theory]
         [InlineData("Romance")]
         [InlineData("Computação")]
-        public void Should_CreateSubject(string name)
+        [InlineData("Poesia")]
+        public void Should_CreateSubject(string description)
         {
-            var subject = SubjectDomain.Subject.Create(name);
+            var subject = SubjectDomain.Subject.Create(description);
 
             subject.Should().NotBeNull();
-            subject.Name.Should().Be(name);
+            subject.Description.Should().Be(description);
         }
     }
 }

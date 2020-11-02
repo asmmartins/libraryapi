@@ -7,21 +7,21 @@ namespace Library.Domain.Subjects
         public SubjectValidator()
         {
             AddIdRules();
-            AddNameRules();            
+            AddDescriptionRules();            
         }
 
         private void AddIdRules()
         {
-            RuleFor(group => group.Id).NotNull();
-            RuleFor(group => group.Id).NotEmpty();
+            RuleFor(subject => subject.Id).NotNull();
+            RuleFor(subject => subject.Id).NotEmpty();
         }
 
-        private void AddNameRules()
+        private void AddDescriptionRules()
         {
-            RuleFor(group => group.Name).NotNull();
-            RuleFor(group => group.Name).NotEmpty();
-            RuleFor(group => group.Name).MinimumLength(1);
-            RuleFor(group => group.Name).MaximumLength(20);
+            RuleFor(subject => subject.Description).NotNull();
+            RuleFor(subject => subject.Description).NotEmpty();
+            RuleFor(subject => subject.Description).MinimumLength(1);
+            RuleFor(subject => subject.Description).MaximumLength(20);
         }        
     }
 }

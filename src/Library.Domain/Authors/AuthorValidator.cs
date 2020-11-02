@@ -12,16 +12,16 @@ namespace Library.Domain.Authors
 
         private void AddIdRules()
         {
-            RuleFor(group => group.Id).NotNull();
-            RuleFor(group => group.Id).NotEmpty();
+            RuleFor(author => author.Id).NotNull();
+            RuleFor(author => author.Id).NotEmpty();
         }
 
         private void AddNameRules()
         {
-            RuleFor(group => group.Name).NotNull();
-            RuleFor(group => group.Name).NotEmpty();
-            RuleFor(group => group.Name).MinimumLength(1);
-            RuleFor(group => group.Name).MaximumLength(40);
+            RuleFor(author => author.Name).NotNull();
+            RuleFor(author => author.Name).NotEmpty();
+            RuleFor(author => author.Name).MinimumLength(1);
+            RuleFor(author => author.Name).MaximumLength(40);
         }        
     }
 }

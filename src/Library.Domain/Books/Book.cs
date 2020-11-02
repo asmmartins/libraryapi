@@ -1,5 +1,8 @@
-﻿using Library.Domain.Shared;
+﻿using Library.Domain.Authors;
+using Library.Domain.Shared;
+using Library.Domain.Subjects;
 using System;
+using System.Collections.Generic;
 
 namespace Library.Domain.Books
 {
@@ -10,6 +13,10 @@ namespace Library.Domain.Books
         public string PublishingCompany { get; private set; }
         public int Edition { get; private set; }
         public string PublicationYear { get; private set; }
+
+        public ICollection<Subject> Subjects { get; private set; }
+
+        public ICollection<Author> Authors { get; private set; }
 
         protected Book() { }
     }

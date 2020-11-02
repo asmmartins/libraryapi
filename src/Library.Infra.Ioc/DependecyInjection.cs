@@ -6,6 +6,7 @@ namespace Library.Infra.Ioc
     {
         public static void AddDependecyInjection(this IServiceCollection services)
         {
+            services.AddDbContext();
             services.AddRepositories();
             services.AddUseCases();
         }

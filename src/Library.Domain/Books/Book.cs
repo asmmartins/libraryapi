@@ -1,6 +1,6 @@
-﻿using Library.Domain.Authors;
+﻿using Library.Domain.BookAuthors;
+using Library.Domain.BookSubjects;
 using Library.Domain.Shared;
-using Library.Domain.Subjects;
 using System;
 using System.Collections.Generic;
 
@@ -14,9 +14,9 @@ namespace Library.Domain.Books
         public int Edition { get; private set; }
         public string PublicationYear { get; private set; }
 
-        public ICollection<Subject> Subjects { get; private set; }
+        public List<BookAuthor> BookAuthors { get; private set; }
 
-        public ICollection<Author> Authors { get; private set; }
+        public List<BookSubject> BookSubjects { get; private set; }        
 
         protected Book() { }
     }

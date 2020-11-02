@@ -20,6 +20,12 @@ namespace Library.Repository.Shared
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            AddBookAuthor(modelBuilder);
+            AddBookSubject(modelBuilder);
+        }
+
+        private void AddBookAuthor(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<BookAuthor>()
                 .HasKey(t => new { t.BookId, t.AuthorId });
 
@@ -32,7 +38,10 @@ namespace Library.Repository.Shared
                 .HasOne(pt => pt.Author)
                 .WithMany(t => t.BookAuthors)
                 .HasForeignKey(pt => pt.AuthorId);
+        }
 
+        private void AddBookSubject(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<BookSubject>()
                 .HasKey(t => new { t.BookId, t.SubjectId });
 
@@ -46,5 +55,6 @@ namespace Library.Repository.Shared
                 .WithMany(t => t.BookSubjects)
                 .HasForeignKey(pt => pt.SubjectId);
         }
+
     }
 }

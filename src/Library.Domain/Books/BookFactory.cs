@@ -1,6 +1,9 @@
 ﻿using FluentValidation;
+using Library.Domain.Authors;
 using Library.Domain.Shared;
+using Library.Domain.Subjects;
 using System;
+using System.Collections.Generic;
 
 namespace Library.Domain.Books
 {

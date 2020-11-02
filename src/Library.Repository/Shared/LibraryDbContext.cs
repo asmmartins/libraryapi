@@ -20,8 +20,45 @@ namespace Library.Repository.Shared
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            AddAuthor(modelBuilder);
+            AddSubject(modelBuilder);
+            AddBook(modelBuilder);
             AddBookAuthor(modelBuilder);
             AddBookSubject(modelBuilder);
+        }
+
+        private void AddAuthor(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Author>()
+                .Property(s => s.Name)
+                .HasMaxLength(40)
+                .IsRequired();
+        }
+
+        private void AddSubject(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Subject>()
+                .Property(s => s.Description)
+                .HasMaxLength(20)
+                .IsRequired();
+        }
+
+        private void AddBook(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Book>()
+                .Property(s => s.Title)
+                .HasMaxLength(40)
+                .IsRequired();
+
+            modelBuilder.Entity<Book>()
+               .Property(s => s.PublishingCompany)
+               .HasMaxLength(40)
+               .IsRequired();
+
+            modelBuilder.Entity<Book>()
+               .Property(s => s.PublicationYear)
+               .HasMaxLength(4)
+               .IsRequired();
         }
 
         private void AddBookAuthor(ModelBuilder modelBuilder)

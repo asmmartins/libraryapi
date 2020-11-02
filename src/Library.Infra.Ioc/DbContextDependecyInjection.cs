@@ -12,7 +12,7 @@ namespace Library.Infra.Ioc
                opt.UseInMemoryDatabase("LibraryDb"));*/
 
             services.AddDbContext<LibraryDbContext>(opcoes => opcoes
-                .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Default;Trusted_Connection=True;MultipleActiveResultSets=true"));
+                .UseSqlServer(@"Data Source=LAPTOP-IBJGEQ76\SQLEXPRESS;Initial Catalog=Default;Integrated Security=True"));
         }
     }
 }

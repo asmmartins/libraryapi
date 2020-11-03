@@ -19,5 +19,10 @@ namespace Library.Repository.Shared
         }
 
         public IEnumerable<PublicSchool> GetAll() => publicSchools;
+
+        public void Remove(PublicSchool PublicSchool)
+        {
+            publicSchools.Remove(PublicSchool);            
+        }
     }
 }

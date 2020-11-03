@@ -7,5 +7,6 @@ namespace Library.Domain.Shared
     {
         Task Save(T aggregation);
         Task<IEnumerable<T>> GetAll();
+        Task Remove(T aggregation);
     }
 }

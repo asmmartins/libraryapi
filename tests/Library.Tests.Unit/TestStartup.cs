@@ -23,7 +23,7 @@ namespace Library.Tests.Unit
 
         protected void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDependecyInjection();
+            services.AddDependecyInjection(configuration);
         }
 
         protected override IHostBuilder CreateHostBuilder(AssemblyName assemblyName) =>

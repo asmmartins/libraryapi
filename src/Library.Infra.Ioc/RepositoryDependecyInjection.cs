@@ -5,6 +5,12 @@ using Library.Domain.Shared;
 using Library.Repository.Groups;
 using Library.Repository.PublicSchools;
 using Library.Repository.Shared;
+using Library.Repository.Authors;
+using Library.Domain.Authors;
+using Library.Domain.Subjects;
+using Library.Repository.Subjects;
+using Library.Domain.Books;
+using Library.Repository.Books;
 
 namespace Library.Infra.Ioc
 {
@@ -17,6 +23,12 @@ namespace Library.Infra.Ioc
 
             services.AddSingleton<GroupDbContext>();
             services.AddScoped<IRepository<Group>, GroupRepository>();
+
+            services.AddScoped<IRepository<Author>, AuthorRepository>();
+
+            services.AddScoped<IRepository<Subject>, SubjectRepository>();
+
+            services.AddScoped<IRepository<Book>, BookRepository>();
         }
     }
 }

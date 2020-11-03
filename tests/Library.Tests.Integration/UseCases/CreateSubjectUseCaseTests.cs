@@ -3,6 +3,7 @@ using FluentValidation;
 using Library.Application.UseCases.CreateSubject;
 using Library.Application.UseCases.GetSubject;
 using Library.Application.UseCases.GetSubjects;
+using Library.Application.UseCases.RemoveSubject;
 using Library.Tests.Integration.Shared;
 using System;
 using System.Linq;
@@ -16,16 +17,18 @@ namespace Library.Tests.Integration.UseCases
         private readonly ICreateSubjectUseCase _createSubjectUseCase;
         private readonly IGetSubjectUseCase _getSubjectUseCase;
         private readonly IGetSubjectsUseCase _getSubjectsUseCase;
-
+        private readonly IRemoveSubjectUseCase _removeSubjectUseCase;
 
         public CreateSubjectUseCaseTests(            
             ICreateSubjectUseCase createSubjectUseCase,
             IGetSubjectUseCase getSubjectUseCase,
-            IGetSubjectsUseCase getSubjectsUseCase)
+            IGetSubjectsUseCase getSubjectsUseCase,
+            IRemoveSubjectUseCase removeSubjectUseCase)
         {            
             _createSubjectUseCase = createSubjectUseCase;
             _getSubjectUseCase = getSubjectUseCase;
             _getSubjectsUseCase = getSubjectsUseCase;
+            _removeSubjectUseCase = removeSubjectUseCase;
         }
 
         [Theory]        
@@ -40,14 +43,19 @@ namespace Library.Tests.Integration.UseCases
 
             await _createSubjectUseCase.Execute(createSubjectRequest);            
 
-            var Subjects = await _getSubjectsUseCase.Execute();
-            Subjects.Should().NotBeNull();
-            Subjects.Should().OnlyHaveUniqueItems();
+            var subjects = await _getSubjectsUseCase.Execute();
+            subjects.Should().NotBeNull();
+            subjects.Should().OnlyHaveUniqueItems();
 
-            var Subject = Subjects.First();
-            var existentSubject = await _getSubjectUseCase.Execute(Subject.Id);
+            var subject = subjects.FirstOrDefault(x => x.Description.ToLower() == createSubjectRequest.Description.ToLower());
+
+            var existentSubject = await _getSubjectUseCase.Execute(subject.Id);
             existentSubject.Should().NotBeNull();
-            existentSubject.Should().BeEquivalentTo(Subject);
+            existentSubject.Should().BeEquivalentTo(subject);
+
+            await _removeSubjectUseCase.Execute(new RemoveSubjectRequest() { Id = subject.Id });
+            existentSubject = await _getSubjectUseCase.Execute(subject.Id);
+            existentSubject.Should().BeNull();
         }
 
         [Fact]

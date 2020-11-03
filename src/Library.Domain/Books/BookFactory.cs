@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
 using Library.Domain.Authors;
+using Library.Domain.BookAuthors;
+using Library.Domain.BookSubjects;
 using Library.Domain.Shared;
 using Library.Domain.Subjects;
 using System;
@@ -9,7 +11,7 @@ namespace Library.Domain.Books
 {
     public partial class Book : IAggregateRoot
     {
-        public static Book Create(string title, string publishingCompany, int edition, string publicationYear, decimal price)
+        public static Book Create(string title, string publishingCompany, int edition, string publicationYear, decimal price, List<Subject> subjects, List<Author> authors)
         {
             var book = new Book()
             {
@@ -18,8 +20,11 @@ namespace Library.Domain.Books
                 PublishingCompany = publishingCompany?.Trim(),
                 Edition = edition,
                 PublicationYear = publicationYear?.Trim(),
-                Price = price
+                Price = price,                
             };
+
+            book.BookSubjects = BookSubject.Create(book, subjects);
+            book.BookAuthors = BookAuthor.Create(book, authors);
 
             Validate(book);
 

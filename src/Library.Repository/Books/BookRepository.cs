@@ -35,7 +35,7 @@ namespace Library.Repository.Books
 
         public async Task Remove(Book aggregation)
         {
-            _context.Books.Remove(aggregation);
+            _context.Books.Remove(aggregation);            
             await _context.SaveChangesAsync();
         }
     }

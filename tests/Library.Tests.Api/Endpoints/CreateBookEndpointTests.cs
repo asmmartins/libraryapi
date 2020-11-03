@@ -10,6 +10,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 using System.Linq;
+using Library.Application.UseCases.CreateSubject;
 
 namespace Library.Tests.Api.Endpoints
 {
@@ -26,6 +27,8 @@ namespace Library.Tests.Api.Endpoints
         public async Task Should_CreateBookController_Returns204(string title, string publishingCompany, int edition, string publicationYear, decimal price)
         {
             await Should_CreateAuthor_Returns204();
+
+            await Should_CreateSubject_Returns204();
 
             CreateBookRequest createBookRequest = new CreateBookRequest()
             {
@@ -88,7 +91,7 @@ namespace Library.Tests.Api.Endpoints
         {
             CreateAuthorRequest createAuthorRequest = new CreateAuthorRequest()
             {                
-                Name = "Escola Novo Amanhã",
+                Name = "Clarrise Lispector",
             };
 
             var route = $"authors";
@@ -133,6 +136,61 @@ namespace Library.Tests.Api.Endpoints
 
             var json = await response.Content.ReadAsStringAsync();
             var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<AuthorDto>(json) : null;
+
+            // Asserts
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            content.Should().NotBeNull();
+        }
+
+        private async Task Should_CreateSubject_Returns204()
+        {
+            CreateSubjectRequest createAuthorRequest = new CreateSubjectRequest()
+            {
+                Description = "Romance",
+            };
+
+            var route = $"subjects";
+
+            // Acts
+            var client = await _testHost.GetClientAsync();
+            var stringContent = createAuthorRequest.ToJsonContent();
+            var response = await client.PostAsync(route, stringContent);
+
+            // Asserts
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+
+            await Should_GetSubjects_Returns200();
+        }
+
+        private async Task Should_GetSubjects_Returns200()
+        {
+            var route = $"subjects";
+
+            // Acts
+            var client = await _testHost.GetClientAsync();
+            var response = await client.GetAsync(route);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<IEnumerable<SubjectDto>>(json) : null;
+
+            // Asserts
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            content.Should().NotBeNull();
+            content.Should().OnlyHaveUniqueItems();
+
+            await Should_GetSubject_Returns200(content.FirstOrDefault().Id);
+        }
+
+        private async Task Should_GetSubject_Returns200(Guid id)
+        {
+            var route = $"subjects/{id}";
+
+            // Acts
+            var client = await _testHost.GetClientAsync();
+            var response = await client.GetAsync(route);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<SubjectDto>(json) : null;
 
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.OK);

@@ -1,4 +1,4 @@
-﻿using Library.Application.UseCases.GetGroup;
+﻿using Library.Application.UseCases.GetSubject;
 using Library.Application.UseCases.Shared.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,29 +9,29 @@ namespace Library.Api.Controllers
 {
     [ApiController]
     [Route("")]
-    public class GetGroupController : ControllerBase
+    public class GetSubjectController : ControllerBase
     {
-        private readonly IGetGroupUseCase _getGroupUseCase;
+        private readonly IGetSubjectUseCase _getSubjectUseCase;
 
-        public GetGroupController(IGetGroupUseCase getGroupUseCase)
+        public GetSubjectController(IGetSubjectUseCase getSubjectUseCase)
         {
-            _getGroupUseCase = getGroupUseCase;
+            _getSubjectUseCase = getSubjectUseCase;
         }
 
         /// <summary>
-        /// Obtém as turmas de uma escola pública.
+        /// Obtém um assunto.
         /// </summary>
-        /// <remarks>Retorna o total de eventos por Library.</remarks>
+        /// <remarks>Obtém um assunto.</remarks>
         /// <response code="200">Ok.</response>
         /// <response code="400">Requisição Inválida.</response>        
         /// <response code="404">Não encontrado.</response>        
-        [HttpGet("groups/{id}")]
+        [HttpGet("subjects/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<GroupDto>> Execute(Guid id)
+        public async Task<ActionResult<SubjectDto>> Execute(Guid id)
         {
-            var response = await _getGroupUseCase.Execute(id);
+            var response = await _getSubjectUseCase.Execute(id);
 
             if (response == null) return NotFound();
 

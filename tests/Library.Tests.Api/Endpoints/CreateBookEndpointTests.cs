@@ -85,6 +85,56 @@ namespace Library.Tests.Api.Endpoints
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             content.Should().NotBeNull();
+
+            await Should_RemoveBook_Returns204(id);
+        }
+
+        private async Task Should_RemoveBook_Returns204(Guid id)
+        {
+            var route = $"books/{id}";
+
+            // Acts
+            var client = await _testHost.GetClientAsync();
+            var response = await client.DeleteAsync(route);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject(json) : null;
+
+            // Asserts
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+            content.Should().BeNull();
+        }
+
+        private async Task Should_RemoveAuthor_Returns204(Guid id)
+        {
+            var route = $"authors/{id}";
+
+            // Acts
+            var client = await _testHost.GetClientAsync();
+            var response = await client.DeleteAsync(route);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject(json) : null;
+
+            // Asserts
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+            content.Should().BeNull();
+        }
+
+        private async Task Should_RemoveSubject_Returns204(Guid id)
+        {
+            var route = $"subjects/{id}";
+
+            // Acts
+            var client = await _testHost.GetClientAsync();
+            var response = await client.DeleteAsync(route);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject(json) : null;
+
+            // Asserts
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+            content.Should().BeNull();
         }
 
         private async Task Should_CreateAuthor_Returns204()
@@ -140,6 +190,8 @@ namespace Library.Tests.Api.Endpoints
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             content.Should().NotBeNull();
+
+            await Should_RemoveAuthor_Returns204(id);
         }
 
         private async Task Should_CreateSubject_Returns204()
@@ -195,6 +247,8 @@ namespace Library.Tests.Api.Endpoints
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             content.Should().NotBeNull();
+
+            await Should_RemoveSubject_Returns204(id);
         }
     }
 }

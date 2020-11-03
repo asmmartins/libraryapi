@@ -18,11 +18,11 @@ namespace Library.UseCases.RemoveBook
             _bookRepository = bookRepository;
         }
 
-        public async Task Execute(RemoveBookRequest RemoveBookRequest)
+        public async Task Execute(RemoveBookRequest removeBookRequest)
         {
-            Validate(RemoveBookRequest);
+            Validate(removeBookRequest);
 
-            var existentBook = await GetBookById(RemoveBookRequest.Id);
+            var existentBook = await GetBookById(removeBookRequest.Id);
 
             if (existentBook == null)
                 throw new ArgumentException("Book not found");
@@ -30,13 +30,13 @@ namespace Library.UseCases.RemoveBook
             await _bookRepository.Remove(existentBook);
         }
 
-        private static void Validate(RemoveBookRequest RemoveBookRequest)
+        private static void Validate(RemoveBookRequest removeBookRequest)
         {
-            if (RemoveBookRequest == null)
+            if (removeBookRequest == null)
                 throw new ArgumentNullException("RemoveBookRequest");
 
             var validator = new RemoveBookRequestValidator();
-            validator.ValidateAndThrow(RemoveBookRequest);
+            validator.ValidateAndThrow(removeBookRequest);
         }
 
         private async Task<Book> GetBookById(Guid id)

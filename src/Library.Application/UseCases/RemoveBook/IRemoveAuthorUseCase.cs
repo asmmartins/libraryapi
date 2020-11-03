@@ -4,6 +4,6 @@ namespace Library.Application.UseCases.RemoveBook
 {
     public interface IRemoveBookUseCase
     {
-        Task Execute(RemoveBookRequest RemoveBookRequest);
+        Task Execute(RemoveBookRequest removeBookRequest);
     }
 }

@@ -27,6 +27,8 @@ using Library.UseCases.RemoveAuthor;
 using Library.Application.UseCases.RemoveAuthor;
 using Library.UseCases.RemoveSubject;
 using Library.Application.UseCases.RemoveSubject;
+using Library.Application.UseCases.CreateBook;
+using Library.UseCases.CreateBook;
 
 namespace Library.Infra.Ioc
 {
@@ -50,6 +52,9 @@ namespace Library.Infra.Ioc
             services.AddTransient<IGetSubjectUseCase, GetSubjectUseCase>();
             services.AddTransient<IGetSubjectsUseCase, GetSubjectsUseCase>();
             services.AddTransient<IRemoveSubjectUseCase, RemoveSubjectUseCase>();
+
+
+            services.AddTransient<ICreateBookUseCase, CreateBookUseCase>();
         }
     }
 }

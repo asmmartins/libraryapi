@@ -28,7 +28,7 @@ namespace Library.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Execute(CreateBookRequest createBookRequest)
-        {            
+        {
             await _createBookUseCase.Execute(createBookRequest);
 
             return NoContent();

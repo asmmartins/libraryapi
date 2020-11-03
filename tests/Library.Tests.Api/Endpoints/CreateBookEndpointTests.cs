@@ -1,16 +1,16 @@
 ﻿using FluentAssertions;
 using Library.Application.UseCases.CreateAuthor;
 using Library.Application.UseCases.CreateBook;
+using Library.Application.UseCases.CreateSubject;
 using Library.Application.UseCases.Shared.Dtos;
 using Library.Domain.Shared.Extensions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Xunit;
-using System.Linq;
-using Library.Application.UseCases.CreateSubject;
 
 namespace Library.Tests.Api.Endpoints
 {
@@ -84,13 +84,13 @@ namespace Library.Tests.Api.Endpoints
 
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            content.Should().NotBeNull();            
+            content.Should().NotBeNull();
         }
 
         private async Task Should_CreateAuthor_Returns204()
         {
             CreateAuthorRequest createAuthorRequest = new CreateAuthorRequest()
-            {                
+            {
                 Name = "Clarrise Lispector",
             };
 

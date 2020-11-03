@@ -28,7 +28,7 @@ namespace Library.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Execute(CreateAuthorRequest createAuthorRequest)
-        {            
+        {
             await _createAuthorUseCase.Execute(createAuthorRequest);
 
             return NoContent();

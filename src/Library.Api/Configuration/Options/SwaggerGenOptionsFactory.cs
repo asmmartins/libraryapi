@@ -18,7 +18,7 @@ namespace Library.Api.Configuration.Options
             {
                 Title = "Library API",
                 Version = "v1",
-                Description = "Resources are responsable to manager the Library.",
+                Description = "Recursos são responsáveis por gerenciar biblioteca.",
             };
 
             return options =>

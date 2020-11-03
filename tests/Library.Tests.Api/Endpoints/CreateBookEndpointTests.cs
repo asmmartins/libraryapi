@@ -86,7 +86,83 @@ namespace Library.Tests.Api.Endpoints
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             content.Should().NotBeNull();
 
+            await Should_UpdateBook_Returns204(id);
+        }
+
+        private async Task Should_UpdateBook_Returns204(Guid id)
+        {
+            CreateBookRequest createBookRequest = new CreateBookRequest()
+            {
+                Title = "Livro de Atualizacao",
+                PublishingCompany = "Editora de Atualizacao",
+                Edition = 1,
+                PublicationYear = "2020",
+                Price = 1.99m
+            };
+
+            var route = $"books/{id}";
+
+            // Acts
+            var client = await _testHost.GetClientAsync();
+            var stringContent = createBookRequest.ToJsonContent();
+            var response = await client.PutAsync(route, stringContent);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject(json) : null;
+
+            // Asserts
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+            content.Should().BeNull();
+
             await Should_RemoveBook_Returns204(id);
+        }
+
+        private async Task Should_UpdateAuthor_Returns204(Guid id)
+        {
+            CreateAuthorRequest createBookRequest = new CreateAuthorRequest()
+            {
+                Name = "Autor de Atualizacao"
+            };
+
+            var route = $"authors/{id}";
+
+            // Acts
+            var client = await _testHost.GetClientAsync();
+            var stringContent = createBookRequest.ToJsonContent();
+            var response = await client.PutAsync(route, stringContent);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject(json) : null;
+
+            // Asserts
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+            content.Should().BeNull();
+
+            await Should_RemoveAuthor_Returns204(id);
+        }
+
+        private async Task Should_UpdateSubject_Returns204(Guid id)
+        {
+            CreateSubjectRequest createBookRequest = new CreateSubjectRequest()
+            {
+                Description = "Atualizacao"
+            };
+
+            var route = $"subjects/{id}";
+
+            // Acts
+            var client = await _testHost.GetClientAsync();
+            var stringContent = createBookRequest.ToJsonContent();
+            var response = await client.PutAsync(route, stringContent);
+
+            var json = await response.Content.ReadAsStringAsync();
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject(json) : null;
+
+            // Asserts
+            response.StatusCode.Should().Be(HttpStatusCode.NoContent);
+            content.Should().BeNull();
+
+            await Should_RemoveSubject_Returns204(id);
         }
 
         private async Task Should_RemoveBook_Returns204(Guid id)
@@ -118,7 +194,7 @@ namespace Library.Tests.Api.Endpoints
 
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.NoContent);
-            content.Should().BeNull();
+            content.Should().BeNull();                      
         }
 
         private async Task Should_RemoveSubject_Returns204(Guid id)
@@ -191,7 +267,7 @@ namespace Library.Tests.Api.Endpoints
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             content.Should().NotBeNull();
 
-            await Should_RemoveAuthor_Returns204(id);
+            await Should_UpdateAuthor_Returns204(id);
         }
 
         private async Task Should_CreateSubject_Returns204()
@@ -248,7 +324,7 @@ namespace Library.Tests.Api.Endpoints
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             content.Should().NotBeNull();
 
-            await Should_RemoveSubject_Returns204(id);
+            await Should_UpdateSubject_Returns204(id);            
         }
     }
 }

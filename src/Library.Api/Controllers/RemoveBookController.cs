@@ -26,12 +26,12 @@ namespace Library.Api.Controllers
         /// <response code="400">Requisição Inválida.</response>                    
         [HttpDelete("books/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]        
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<BookDto>> Execute(Guid id)
         {
             var request = new RemoveBookRequest() { Id = id };
 
-            await _removeBookUseCase.Execute(request);            
+            await _removeBookUseCase.Execute(request);
 
             return NoContent();
         }

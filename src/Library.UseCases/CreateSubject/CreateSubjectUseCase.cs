@@ -3,7 +3,6 @@ using Library.Application.UseCases.CreateSubject;
 using Library.Domain.Shared;
 using Library.Domain.Subjects;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Library.UseCases.CreateSubject
@@ -22,7 +21,7 @@ namespace Library.UseCases.CreateSubject
         {
             Validate(createSubjectRequest);
 
-            var existentSubject = await GetSubjectByName(createSubjectRequest.Description);
+            var existentSubject = await GetSubjectById(createSubjectRequest.Id);
 
             if (existentSubject == null)
             {
@@ -44,10 +43,12 @@ namespace Library.UseCases.CreateSubject
             validator.ValidateAndThrow(createSubjectRequest);
         }
 
-        private async Task<Subject> GetSubjectByName(string name)
+        private async Task<Subject> GetSubjectById(Guid? id)
         {
-            var subjects = await _subjectRepository.GetAll();
-            return subjects?.FirstOrDefault(subject => subject.Description.ToLower() == name?.Trim().ToLower());
+            if (!id.HasValue)
+                return null;
+
+            return await _subjectRepository.GetById(id.Value);
         }
     }
 }

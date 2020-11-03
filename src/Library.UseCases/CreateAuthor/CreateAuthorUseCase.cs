@@ -3,7 +3,6 @@ using Library.Application.UseCases.CreateAuthor;
 using Library.Domain.Authors;
 using Library.Domain.Shared;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Library.UseCases.CreateAuthor
@@ -22,7 +21,7 @@ namespace Library.UseCases.CreateAuthor
         {
             Validate(createAuthorRequest);
 
-            var existentAuthor = await GetAuthorByName(createAuthorRequest.Name);
+            var existentAuthor = await GetAuthorById(createAuthorRequest.Id);
 
             if (existentAuthor == null)
             {
@@ -44,10 +43,12 @@ namespace Library.UseCases.CreateAuthor
             validator.ValidateAndThrow(createAuthorRequest);
         }
 
-        private async Task<Author> GetAuthorByName(string name)
+        private async Task<Author> GetAuthorById(Guid? id)
         {
-            var authors = await _authorRepository.GetAll();
-            return authors?.FirstOrDefault(Author => Author.Name.ToLower() == name?.Trim().ToLower());
+            if (!id.HasValue)
+                return null;
+
+            return await _authorRepository.GetById(id.Value);
         }
     }
 }

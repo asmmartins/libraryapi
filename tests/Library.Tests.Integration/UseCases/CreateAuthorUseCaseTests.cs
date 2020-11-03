@@ -5,6 +5,7 @@ using Library.Application.UseCases.GetAuthor;
 using Library.Application.UseCases.GetAuthors;
 using Library.Tests.Integration.Shared;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -42,12 +43,10 @@ namespace Library.Tests.Integration.UseCases
             authors.Should().NotBeNull();
             authors.Should().OnlyHaveUniqueItems();
 
-            foreach (var a in authors)
-            {
-                var existentAuthor = await _getAuthorUseCase.Execute(a.Id);
-                existentAuthor.Should().NotBeNull();
-                existentAuthor.Should().BeEquivalentTo(a);                
-            }
+            var author = authors.First();
+            var existentAuthor = await _getAuthorUseCase.Execute(author.Id);
+            existentAuthor.Should().NotBeNull();
+            existentAuthor.Should().BeEquivalentTo(author);
         }
 
         [Fact]

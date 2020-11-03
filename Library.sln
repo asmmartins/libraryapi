@@ -22,15 +22,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Tests.Integration",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Tests.Unit", "tests\Library.Tests.Unit\Library.Tests.Unit.csproj", "{92CE34F1-26ED-4E3F-9C6A-93B75BE1B5FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Application", "src\Library.Application\Library.Application.csproj", "{06FB8342-8561-444D-AB81-F81F8A5D15E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Application", "src\Library.Application\Library.Application.csproj", "{06FB8342-8561-444D-AB81-F81F8A5D15E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Domain", "src\Library.Domain\Library.Domain.csproj", "{52943472-70CA-4823-8868-24B3F3A6AC8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Domain", "src\Library.Domain\Library.Domain.csproj", "{52943472-70CA-4823-8868-24B3F3A6AC8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Repository", "src\Library.Repository\Library.Repository.csproj", "{76F806B4-B7AD-4FE4-8EE3-37663F4B411E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Repository", "src\Library.Repository\Library.Repository.csproj", "{76F806B4-B7AD-4FE4-8EE3-37663F4B411E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.UseCases", "src\Library.UseCases\Library.UseCases.csproj", "{6D441406-1443-49D0-A460-CC2101217EB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.UseCases", "src\Library.UseCases\Library.UseCases.csproj", "{6D441406-1443-49D0-A460-CC2101217EB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Infra.Ioc", "src\Library.Infra.Ioc\Library.Infra.Ioc.csproj", "{F358D2B6-4B5C-4A86-A443-C67BC99C10F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.Infra.Ioc", "src\Library.Infra.Ioc\Library.Infra.Ioc.csproj", "{F358D2B6-4B5C-4A86-A443-C67BC99C10F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

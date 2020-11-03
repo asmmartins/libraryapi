@@ -25,5 +25,10 @@ namespace Library.Repository.Groups
         {
             return _context.GetAll();
         }
+
+        public async Task Remove(Group aggregation)
+        {
+            _context.Remove(aggregation);
+        }
     }
 }

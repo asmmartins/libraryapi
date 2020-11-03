@@ -32,5 +32,11 @@ namespace Library.Repository.Books
         {
             return await _context.Books.ToListAsync();
         }
+
+        public async Task Remove(Book aggregation)
+        {
+            _context.Books.Remove(aggregation);
+            await _context.SaveChangesAsync();
+        }
     }
 }

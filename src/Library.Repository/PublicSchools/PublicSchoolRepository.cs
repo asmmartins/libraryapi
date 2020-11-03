@@ -25,5 +25,10 @@ namespace Library.Repository.PublicSchools
         {
             return _context.GetAll();
         }
+
+        public async Task Remove(PublicSchool aggregation)
+        {
+            _context.Remove(aggregation);
+        }
     }
 }

@@ -19,5 +19,10 @@ namespace Library.Repository.Shared
         }
 
         public IEnumerable<Group> GetAll() => groups;
+
+        public void Remove(Group Group)
+        {
+            groups.Remove(Group);            
+        }
     }
 }

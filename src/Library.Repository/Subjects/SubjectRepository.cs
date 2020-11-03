@@ -32,5 +32,11 @@ namespace Library.Repository.Subjects
         {
             return await _context.Subjects.ToListAsync();
         }
+
+        public async Task Remove(Subject aggregation)
+        {
+            _context.Subjects.Remove(aggregation);
+            await _context.SaveChangesAsync();
+        }
     }
 }

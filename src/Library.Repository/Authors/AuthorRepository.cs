@@ -33,5 +33,11 @@ namespace Library.Repository.Authors
         {
             return await _context.Authors.ToListAsync();
         }
+
+        public async Task Remove(Author aggregation)
+        {
+            _context.Authors.Remove(aggregation);
+            await _context.SaveChangesAsync();
+        }
     }
 }

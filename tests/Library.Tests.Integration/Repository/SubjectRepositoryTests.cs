@@ -39,6 +39,16 @@ namespace Library.Tests.Integration.Repository
 
             var existents = subjects.Where(x => x.Id == subject.Id).ToList();
             existents.Count.Should().Be(1);
+
+            await _subjectRepository.Remove(subject);
+
+            subjects = await _subjectRepository.GetAll();
+
+            existent = subjects.FirstOrDefault(x => x.Id == subject.Id);
+            existent.Should().BeNull();
+
+            existents = subjects.Where(x => x.Id == subject.Id).ToList();
+            existents.Count.Should().Be(0);
         }
     }
 }

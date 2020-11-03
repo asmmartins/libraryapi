@@ -38,6 +38,16 @@ namespace Library.Tests.Integration.Repository
 
             var existents = authors.Where(x => x.Id == author.Id).ToList();
             existents.Count.Should().Be(1);
+
+            await _authorRepository.Remove(existent);
+
+            authors = await _authorRepository.GetAll();
+
+            existent = authors.FirstOrDefault(x => x.Id == author.Id);
+            existent.Should().BeNull();
+
+            existents = authors.Where(x => x.Id == author.Id).ToList();
+            existents.Count.Should().Be(0);
         }
     }
 }

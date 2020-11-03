@@ -40,6 +40,16 @@ namespace Library.Tests.Integration.Repository
 
             var existents = books.Where(x => x.Id == book.Id).ToList();
             existents.Count.Should().Be(1);
+
+            await _bookRepository.Remove(book);
+
+            books = await _bookRepository.GetAll();
+
+            existent = books.FirstOrDefault(x => x.Id == book.Id);
+            existent.Should().BeNull();
+
+            existents = books.Where(x => x.Id == book.Id).ToList();
+            existents.Count.Should().Be(0);
         }
     }
 }

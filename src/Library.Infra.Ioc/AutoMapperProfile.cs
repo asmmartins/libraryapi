@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Library.Application.UseCases.GetPublicSchool;
 using Library.Application.UseCases.Shared.Dtos;
+using Library.Domain.Authors;
 using Library.Domain.Groups;
 using Library.Domain.PublicSchools;
 using Library.Domain.Shared.ValueObjects.Addresses;
@@ -14,6 +15,7 @@ namespace Library.Infra.Ioc
             CreatePublicSchoolMap();
             CreateAddressMap();
             CreateGroupMap();
+            CreateAuthorMap();
         }
 
         private void CreateAddressMap()
@@ -31,6 +33,11 @@ namespace Library.Infra.Ioc
         private void CreateGroupMap()
         {
             CreateMap<Group, GroupDto>();
+        }
+
+        private void CreateAuthorMap()
+        {
+            CreateMap<Author, AuthorDto>();
         }
     }
 }

@@ -11,6 +11,12 @@ using Library.UseCases.GetGroup;
 using Library.UseCases.GetGroups;
 using Library.UseCases.GetPublicSchool;
 using Library.UseCases.GetPublicSchools;
+using Library.Application.UseCases.CreateAuthor;
+using Library.UseCases.CreateAuthor;
+using Library.Application.UseCases.GetAuthor;
+using Library.Application.UseCases.GetAuthors;
+using Library.UseCases.GetAuthor;
+using Library.UseCases.GetAuthors;
 
 namespace Library.Infra.Ioc
 {
@@ -24,6 +30,10 @@ namespace Library.Infra.Ioc
             services.AddTransient<IGetGroupsUseCase, GetGroupsUseCase>();
             services.AddTransient<IGetGroupUseCase, GetGroupUseCase>();
             services.AddTransient<IGetPublicSchoolsUseCase, GetPublicSchoolsUseCase>();
+
+            services.AddTransient<ICreateAuthorUseCase, CreateAuthorUseCase>();
+            services.AddTransient<IGetAuthorUseCase, GetAuthorUseCase>();
+            services.AddTransient<IGetAuthorsUseCase, GetAuthorsUseCase>();
         }
     }
 }

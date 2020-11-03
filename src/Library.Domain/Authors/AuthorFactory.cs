@@ -17,7 +17,13 @@ namespace Library.Domain.Authors
             Validate(author);
 
             return author;
-        }       
+        }
+
+        public void Update(string name)
+        {
+            Name = name?.Trim();
+            Validate(this);
+        }
 
         private static void Validate(Author author)
         {

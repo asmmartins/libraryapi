@@ -44,11 +44,13 @@ namespace Library.Infra.Ioc
         private void CreateBookAuthorMap()
         {
             CreateMap<BookAuthor, AuthorDto>();
+            CreateMap<BookAuthor, BookAuthorDto>();
         }
 
         private void CreateBookSubjectMap()
         {
             CreateMap<BookSubject, SubjectDto>();
+            CreateMap<BookSubject, BookSubjectDto>();
         }
     }
 }

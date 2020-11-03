@@ -13,6 +13,7 @@ namespace Library.Domain.Books
         public string PublishingCompany { get; private set; }
         public int Edition { get; private set; }
         public string PublicationYear { get; private set; }
+        public decimal Price { get; private set; }
 
         public List<BookAuthor> BookAuthors { get; private set; }
 

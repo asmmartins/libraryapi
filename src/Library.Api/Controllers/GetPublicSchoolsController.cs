@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Library.Application.UseCases.GetPublicSchool;
-
 using Library.Application.UseCases.GetPublicSchools;
 using Library.Application.UseCases.Shared.Dtos;
 using System.Collections.Generic;

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Repository.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    [Migration("20201102224734_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201103140430_CreateAllTables")]
+    partial class CreateAllTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,6 +75,9 @@ namespace Library.Repository.Migrations
 
                     b.Property<int>("Edition")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(10, 4)");
 
                     b.Property<string>("PublicationYear")
                         .IsRequired()

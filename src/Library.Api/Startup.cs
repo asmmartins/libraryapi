@@ -28,7 +28,7 @@ namespace Library.Api
             services.AddMyControllers();
             services.AddMySwaggerGen();
             services.AddAutoMapper(typeof(AutoMapperProfile));
-            services.AddDependecyInjection();
+            services.AddDependecyInjection(_config);
         }
 
         public virtual void Configure(IApplicationBuilder app, IWebHostEnvironment env)

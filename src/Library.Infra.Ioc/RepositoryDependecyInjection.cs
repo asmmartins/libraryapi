@@ -10,7 +10,7 @@ namespace Library.Infra.Ioc
 {
     internal static class DbContextDependecyInjection
     {
-        public static void AddDbContext(this IServiceCollection services)
+        public static void AddRepositories(this IServiceCollection services)
         {
             services.AddSingleton<PublicSchoolDbContext>();
             services.AddScoped<IRepository<PublicSchool>, PublicSchoolRepository>();

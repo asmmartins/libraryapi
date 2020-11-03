@@ -25,7 +25,7 @@ namespace Library.Tests.Integration
         protected void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddAutoMapper(typeof(AutoMapperProfile));
-            services.AddDependecyInjection();
+            services.AddDependecyInjection(configuration);
         }
 
         protected override IHostBuilder CreateHostBuilder(AssemblyName assemblyName) =>

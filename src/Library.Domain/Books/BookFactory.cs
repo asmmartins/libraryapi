@@ -9,7 +9,7 @@ namespace Library.Domain.Books
 {
     public partial class Book : IAggregateRoot
     {
-        public static Book Create(string title, string publishingCompany, int edition, string publicationYear)
+        public static Book Create(string title, string publishingCompany, int edition, string publicationYear, decimal price)
         {
             var book = new Book()
             {
@@ -17,7 +17,8 @@ namespace Library.Domain.Books
                 Title = title?.Trim(), 
                 PublishingCompany = publishingCompany?.Trim(),
                 Edition = edition,
-                PublicationYear = publicationYear?.Trim()
+                PublicationYear = publicationYear?.Trim(),
+                Price = price
             };
 
             Validate(book);

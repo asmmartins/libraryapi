@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Library.Repository.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class CreateAllTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,8 @@ namespace Library.Repository.Migrations
                     Title = table.Column<string>(maxLength: 40, nullable: false),
                     PublishingCompany = table.Column<string>(maxLength: 40, nullable: false),
                     Edition = table.Column<int>(nullable: false),
-                    PublicationYear = table.Column<string>(maxLength: 4, nullable: false)
+                    PublicationYear = table.Column<string>(maxLength: 4, nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(10, 4)", nullable: false)
                 },
                 constraints: table =>
                 {

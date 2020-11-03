@@ -1,12 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Library.Infra.Ioc
 {
     public static class DependecyInjection
     {
-        public static void AddDependecyInjection(this IServiceCollection services)
+        public static void AddDependecyInjection(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext();
+            services.AddDbContext(configuration);
             services.AddRepositories();
             services.AddUseCases();
         }

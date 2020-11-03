@@ -74,6 +74,9 @@ namespace Library.Repository.Migrations
                     b.Property<int>("Edition")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(10, 4)");
+
                     b.Property<string>("PublicationYear")
                         .IsRequired()
                         .HasColumnType("nvarchar(4)")

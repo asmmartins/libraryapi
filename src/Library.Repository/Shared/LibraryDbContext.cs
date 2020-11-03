@@ -59,6 +59,11 @@ namespace Library.Repository.Shared
                .Property(s => s.PublicationYear)
                .HasMaxLength(4)
                .IsRequired();
+
+            modelBuilder.Entity<Book>()
+              .Property(s => s.Price)
+              .HasColumnType("decimal(10, 4)")
+              .IsRequired();            
         }
 
         private void AddBookAuthor(ModelBuilder modelBuilder)

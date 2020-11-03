@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Library.Application.UseCases.RemoveSubject;
-using Library.Domain.Subjects;
 using Library.Domain.Shared;
+using Library.Domain.Subjects;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,23 +10,23 @@ namespace Library.UseCases.RemoveSubject
 {
     public class RemoveSubjectUseCase : IRemoveSubjectUseCase
     {
-        private readonly IRepository<Subject> _SubjectRepository;        
+        private readonly IRepository<Subject> _SubjectRepository;
 
         public RemoveSubjectUseCase(
             IRepository<Subject> SubjectRepository)
         {
-            _SubjectRepository = SubjectRepository;            
+            _SubjectRepository = SubjectRepository;
         }
 
         public async Task Execute(RemoveSubjectRequest RemoveSubjectRequest)
         {
             Validate(RemoveSubjectRequest);
-            
+
             var existentSubject = await GetSubjectById(RemoveSubjectRequest.Id);
 
-            if (existentSubject == null)            
-                throw new ArgumentException("Subject not found");            
-            
+            if (existentSubject == null)
+                throw new ArgumentException("Subject not found");
+
             await _SubjectRepository.Remove(existentSubject);
         }
 
@@ -37,7 +37,7 @@ namespace Library.UseCases.RemoveSubject
 
             var validator = new RemoveSubjectRequestValidator();
             validator.ValidateAndThrow(RemoveSubjectRequest);
-        }    
+        }
 
         private async Task<Subject> GetSubjectById(Guid id)
         {

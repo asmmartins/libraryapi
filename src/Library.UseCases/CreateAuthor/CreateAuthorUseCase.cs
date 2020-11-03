@@ -10,18 +10,18 @@ namespace Library.UseCases.CreateAuthor
 {
     public class CreateAuthorUseCase : ICreateAuthorUseCase
     {
-        private readonly IRepository<Author> _authorRepository;        
+        private readonly IRepository<Author> _authorRepository;
 
         public CreateAuthorUseCase(
             IRepository<Author> authorRepository)
         {
-            _authorRepository = authorRepository;            
+            _authorRepository = authorRepository;
         }
 
         public async Task Execute(CreateAuthorRequest createAuthorRequest)
         {
             Validate(createAuthorRequest);
-            
+
             var existentAuthor = await GetAuthorByName(createAuthorRequest.Name);
 
             if (existentAuthor == null)
@@ -42,7 +42,7 @@ namespace Library.UseCases.CreateAuthor
 
             var validator = new CreateAuthorRequestValidator();
             validator.ValidateAndThrow(createAuthorRequest);
-        }    
+        }
 
         private async Task<Author> GetAuthorByName(string name)
         {

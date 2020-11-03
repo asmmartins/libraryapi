@@ -6,9 +6,9 @@ namespace Library.UseCases.CreateSubject
     public class CreateSubjectRequestValidator : AbstractValidator<CreateSubjectRequest>
     {
         public CreateSubjectRequestValidator()
-        {            
+        {
             AddNameRules();
-        }        
+        }
 
         private void AddNameRules()
         {

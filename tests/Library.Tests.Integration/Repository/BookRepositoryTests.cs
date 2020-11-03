@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using Library.Domain.Books;
 using Library.Domain.Authors;
-using Library.Domain.Subjects;
+using Library.Domain.Books;
 using Library.Domain.Shared;
+using Library.Domain.Subjects;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,7 +27,7 @@ namespace Library.Tests.Integration.Repository
         {
             var authors = new List<Author>() { Author.Create("Ana Carolina Martins"), Author.Create("Caio Paes") };
             var subjects = new List<Subject>() { Subject.Create("Filosofia"), Subject.Create("História") };
-            var book = Book.Create(title, publishingCompany, edition, publicationYear, price, subjects, authors);                 
+            var book = Book.Create(title, publishingCompany, edition, publicationYear, price, subjects, authors);
 
             await _bookRepository.Save(book);
 

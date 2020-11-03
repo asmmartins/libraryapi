@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Library.Application.UseCases.GetSubjects;
 using Library.Application.UseCases.Shared.Dtos;
-using Library.Domain.Subjects;
 using Library.Domain.Shared;
+using Library.Domain.Subjects;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -25,6 +25,6 @@ namespace Library.UseCases.GetSubjects
         {
             var subjects = await _subjectRepository.GetAll();
             return _mapper.Map<IEnumerable<SubjectDto>>(subjects);
-        }                
+        }
     }
 }

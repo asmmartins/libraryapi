@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Library.Application.UseCases.CreateGroup;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Library.Application.UseCases.CreateGroup;
 using System.Threading.Tasks;
 
 namespace Library.Api.Controllers

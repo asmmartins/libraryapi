@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Library.Application.UseCases.GetGroup;
+﻿using Library.Application.UseCases.GetGroup;
 using Library.Application.UseCases.Shared.Dtos;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 

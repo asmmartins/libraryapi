@@ -16,11 +16,11 @@ namespace Library.Domain.Books
             var book = new Book()
             {
                 Id = Guid.NewGuid(),
-                Title = title?.Trim(), 
+                Title = title?.Trim(),
                 PublishingCompany = publishingCompany?.Trim(),
                 Edition = edition,
                 PublicationYear = publicationYear?.Trim(),
-                Price = price,                
+                Price = price,
             };
 
             book.BookSubjects = BookSubject.Create(book, subjects);
@@ -39,12 +39,12 @@ namespace Library.Domain.Books
             PublishingCompany = publishingCompany?.Trim();
             Edition = edition;
             PublicationYear = publicationYear?.Trim();
-            Price = price;           
+            Price = price;
 
             BookSubjects = BookSubject.Create(this, subjects);
             BookAuthors = BookAuthor.Create(this, authors);
 
-            Validate(this);            
+            Validate(this);
         }
 
         private static void Validate(Book book)

@@ -13,36 +13,36 @@ using Xunit;
 namespace Library.Tests.Integration.UseCases
 {
     public class CreateAuthorUseCaseTests
-    {        
+    {
         private readonly ICreateAuthorUseCase _createAuthorUseCase;
         private readonly IGetAuthorUseCase _getAuthorUseCase;
         private readonly IGetAuthorsUseCase _getAuthorsUseCase;
         private readonly IRemoveAuthorUseCase _removeAuthorUseCase;
 
-        public CreateAuthorUseCaseTests(            
+        public CreateAuthorUseCaseTests(
             ICreateAuthorUseCase createAuthorUseCase,
             IGetAuthorUseCase getAuthorUseCase,
-            IGetAuthorsUseCase getAuthorsUseCase, 
+            IGetAuthorsUseCase getAuthorsUseCase,
             IRemoveAuthorUseCase removeAuthorUseCase)
-        {            
+        {
             _createAuthorUseCase = createAuthorUseCase;
             _getAuthorUseCase = getAuthorUseCase;
             _getAuthorsUseCase = getAuthorsUseCase;
             _removeAuthorUseCase = removeAuthorUseCase;
         }
 
-        [Theory]        
+        [Theory]
         [InlineData("Renato Ferreira Pontes")]
         [InlineData("Alex Silva Martins")]
         [InlineData("Paulo Coelho")]
         public async Task Should_CreateAuthorUseCase(string name)
         {
             CreateAuthorRequest createAuthorRequest = new CreateAuthorRequest()
-            {                
-                Name = name               
+            {
+                Name = name
             };
 
-            await _createAuthorUseCase.Execute(createAuthorRequest);            
+            await _createAuthorUseCase.Execute(createAuthorRequest);
 
             var authors = await _getAuthorsUseCase.Execute();
             authors.Should().NotBeNull();
@@ -52,12 +52,12 @@ namespace Library.Tests.Integration.UseCases
 
             var existentAuthor = await _getAuthorUseCase.Execute(author.Id);
             existentAuthor.Should().NotBeNull();
-            existentAuthor.Should().BeEquivalentTo(author);            
+            existentAuthor.Should().BeEquivalentTo(author);
 
             await _removeAuthorUseCase.Execute(new RemoveAuthorRequest() { Id = existentAuthor.Id });
 
             existentAuthor = await _getAuthorUseCase.Execute(author.Id);
-            existentAuthor.Should().BeNull();            
+            existentAuthor.Should().BeNull();
         }
 
         [Fact]

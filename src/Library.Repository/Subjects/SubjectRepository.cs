@@ -1,9 +1,10 @@
-﻿using Library.Domain.Subjects;
-using Library.Domain.Shared;
+﻿using Library.Domain.Shared;
+using Library.Domain.Subjects;
 using Library.Repository.Shared;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Library.Repository.Subjects
 {
@@ -18,13 +19,13 @@ namespace Library.Repository.Subjects
 
         public async Task Save(Subject aggregation)
         {
-            var existent = await _context.Subjects.FirstOrDefaultAsync(x => x.Id == aggregation.Id);
+            var existent = await GetById(aggregation.Id);
 
-            if (existent == null)                            
-                _context.Subjects.Add(aggregation);            
+            if (existent == null)
+                _context.Subjects.Add(aggregation);
             else
                 _context.Subjects.Update(aggregation);
-            
+
             await _context.SaveChangesAsync();
         }
 
@@ -37,6 +38,11 @@ namespace Library.Repository.Subjects
         {
             _context.Subjects.Remove(aggregation);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Subject> GetById(Guid id)
+        {
+            return await _context.Subjects.FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

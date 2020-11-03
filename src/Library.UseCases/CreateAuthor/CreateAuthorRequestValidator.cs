@@ -6,9 +6,9 @@ namespace Library.UseCases.CreateAuthor
     public class CreateAuthorRequestValidator : AbstractValidator<CreateAuthorRequest>
     {
         public CreateAuthorRequestValidator()
-        {            
+        {
             AddNameRules();
-        }        
+        }
 
         private void AddNameRules()
         {

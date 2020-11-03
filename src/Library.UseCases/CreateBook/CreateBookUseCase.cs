@@ -6,19 +6,18 @@ using Library.Domain.Shared;
 using Library.Domain.Subjects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Library.UseCases.CreateBook
 {
     public class CreateBookUseCase : ICreateBookUseCase
     {
-        private readonly IRepository<Book> _BookRepository;        
+        private readonly IRepository<Book> _bookRepository;
 
         public CreateBookUseCase(
-            IRepository<Book> BookRepository)
+            IRepository<Book> bookRepository)
         {
-            _BookRepository = BookRepository;            
+            _bookRepository = bookRepository;
         }
 
         public async Task Execute(CreateBookRequest createBookRequest)
@@ -33,12 +32,12 @@ namespace Library.UseCases.CreateBook
             if (existentBook == null)
             {
                 var book = Book.Create(createBookRequest.Title, createBookRequest.PublishingCompany, createBookRequest.Edition, createBookRequest.PublicationYear, createBookRequest.Price, subjects, authors);
-                await _BookRepository.Save(book);
+                await _bookRepository.Save(book);
                 return;
             }
 
             existentBook.Update(createBookRequest.Title, createBookRequest.PublishingCompany, createBookRequest.Edition, createBookRequest.PublicationYear, createBookRequest.Price, subjects, authors);
-            await _BookRepository.Save(existentBook);
+            await _bookRepository.Save(existentBook);
         }
 
         private static void Validate(CreateBookRequest createBookRequest)
@@ -48,15 +47,14 @@ namespace Library.UseCases.CreateBook
 
             var validator = new CreateBookRequestValidator();
             validator.ValidateAndThrow(createBookRequest);
-        }    
+        }
 
         private async Task<Book> GetBookById(Guid? id)
         {
-            if (!id.HasValue)            
+            if (!id.HasValue)
                 return null;
 
-            var books = await _BookRepository.GetAll();
-            return books?.FirstOrDefault(book => book.Id == id.Value);
-        }        
+            return await _bookRepository.GetById(id.Value);
+        }
     }
 }

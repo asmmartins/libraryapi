@@ -6,9 +6,9 @@ namespace Library.UseCases.CreateBook
     public class CreateBookRequestValidator : AbstractValidator<CreateBookRequest>
     {
         public CreateBookRequestValidator()
-        {            
+        {
             AddTitleRules();
-        }        
+        }
 
         private void AddTitleRules()
         {

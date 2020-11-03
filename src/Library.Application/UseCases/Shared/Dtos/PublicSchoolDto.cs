@@ -6,6 +6,6 @@ namespace Library.Application.UseCases.Shared.Dtos
     {
         public Guid Id { get; set; }
         public string Inep { get; set; }
-        public string Name { get; set; }        
+        public string Name { get; set; }
     }
 }

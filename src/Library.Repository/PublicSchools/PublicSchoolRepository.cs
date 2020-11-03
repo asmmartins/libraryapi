@@ -1,7 +1,9 @@
 ﻿using Library.Domain.PublicSchools;
 using Library.Domain.Shared;
 using Library.Repository.Shared;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Library.Repository.PublicSchools
@@ -29,6 +31,11 @@ namespace Library.Repository.PublicSchools
         public async Task Remove(PublicSchool aggregation)
         {
             _context.Remove(aggregation);
+        }
+
+        public async Task<PublicSchool> GetById(Guid id)
+        {
+            return _context.GetAll().FirstOrDefault(x => x.Id == id);
         }
     }
 }

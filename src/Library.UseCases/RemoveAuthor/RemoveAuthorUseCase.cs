@@ -10,23 +10,23 @@ namespace Library.UseCases.RemoveAuthor
 {
     public class RemoveAuthorUseCase : IRemoveAuthorUseCase
     {
-        private readonly IRepository<Author> _authorRepository;        
+        private readonly IRepository<Author> _authorRepository;
 
         public RemoveAuthorUseCase(
             IRepository<Author> authorRepository)
         {
-            _authorRepository = authorRepository;            
+            _authorRepository = authorRepository;
         }
 
         public async Task Execute(RemoveAuthorRequest RemoveAuthorRequest)
         {
             Validate(RemoveAuthorRequest);
-            
+
             var existentAuthor = await GetAuthorById(RemoveAuthorRequest.Id);
 
-            if (existentAuthor == null)            
-                throw new ArgumentException("Author not found");            
-            
+            if (existentAuthor == null)
+                throw new ArgumentException("Author not found");
+
             await _authorRepository.Remove(existentAuthor);
         }
 
@@ -37,7 +37,7 @@ namespace Library.UseCases.RemoveAuthor
 
             var validator = new RemoveAuthorRequestValidator();
             validator.ValidateAndThrow(RemoveAuthorRequest);
-        }    
+        }
 
         private async Task<Author> GetAuthorById(Guid id)
         {

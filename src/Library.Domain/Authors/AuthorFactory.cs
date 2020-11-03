@@ -11,7 +11,7 @@ namespace Library.Domain.Authors
             var author = new Author()
             {
                 Id = Guid.NewGuid(),
-                Name = name?.Trim(),                
+                Name = name?.Trim(),
             };
 
             Validate(author);

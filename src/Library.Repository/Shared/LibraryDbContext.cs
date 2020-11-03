@@ -16,7 +16,7 @@ namespace Library.Repository.Shared
 
         public DbSet<Author> Authors { get; set; }
         public DbSet<Subject> Subjects { get; set; }
-        public DbSet<Book> Books { get; set; }        
+        public DbSet<Book> Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -63,7 +63,7 @@ namespace Library.Repository.Shared
             modelBuilder.Entity<Book>()
               .Property(s => s.Price)
               .HasColumnType("decimal(10, 4)")
-              .IsRequired();            
+              .IsRequired();
         }
 
         private void AddBookAuthor(ModelBuilder modelBuilder)

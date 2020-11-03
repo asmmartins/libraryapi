@@ -6,9 +6,9 @@ namespace Library.UseCases.RemoveSubject
     public class RemoveSubjectRequestValidator : AbstractValidator<RemoveSubjectRequest>
     {
         public RemoveSubjectRequestValidator()
-        {            
+        {
             AddIdRules();
-        }        
+        }
 
         private void AddIdRules()
         {

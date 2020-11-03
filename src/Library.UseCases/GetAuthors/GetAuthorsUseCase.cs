@@ -25,6 +25,6 @@ namespace Library.UseCases.GetAuthors
         {
             var authors = await _authorRepository.GetAll();
             return _mapper.Map<IEnumerable<AuthorDto>>(authors);
-        }                
+        }
     }
 }

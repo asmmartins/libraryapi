@@ -13,35 +13,35 @@ using Xunit;
 namespace Library.Tests.Integration.UseCases
 {
     public class CreateSubjectUseCaseTests
-    {        
+    {
         private readonly ICreateSubjectUseCase _createSubjectUseCase;
         private readonly IGetSubjectUseCase _getSubjectUseCase;
         private readonly IGetSubjectsUseCase _getSubjectsUseCase;
         private readonly IRemoveSubjectUseCase _removeSubjectUseCase;
 
-        public CreateSubjectUseCaseTests(            
+        public CreateSubjectUseCaseTests(
             ICreateSubjectUseCase createSubjectUseCase,
             IGetSubjectUseCase getSubjectUseCase,
             IGetSubjectsUseCase getSubjectsUseCase,
             IRemoveSubjectUseCase removeSubjectUseCase)
-        {            
+        {
             _createSubjectUseCase = createSubjectUseCase;
             _getSubjectUseCase = getSubjectUseCase;
             _getSubjectsUseCase = getSubjectsUseCase;
             _removeSubjectUseCase = removeSubjectUseCase;
         }
 
-        [Theory]        
+        [Theory]
         [InlineData("Ficção Ciêntifica")]
         [InlineData("Religião")]
         public async Task Should_CreateSubjectUseCase(string description)
         {
             CreateSubjectRequest createSubjectRequest = new CreateSubjectRequest()
-            {                
+            {
                 Description = description
             };
 
-            await _createSubjectUseCase.Execute(createSubjectRequest);            
+            await _createSubjectUseCase.Execute(createSubjectRequest);
 
             var subjects = await _getSubjectsUseCase.Execute();
             subjects.Should().NotBeNull();

@@ -13,32 +13,32 @@ using Xunit;
 namespace Library.Tests.Integration.UseCases
 {
     public class CreateBookUseCaseTests
-    {        
+    {
         private readonly ICreateBookUseCase _createBookUseCase;
         private readonly IGetBookUseCase _getBookUseCase;
         private readonly IGetBooksUseCase _getBooksUseCase;
         private readonly IRemoveBookUseCase _removeBookUseCase;
 
-        public CreateBookUseCaseTests(            
+        public CreateBookUseCaseTests(
             ICreateBookUseCase createBookUseCase,
             IGetBookUseCase getBookUseCase,
-            IGetBooksUseCase getBooksUseCase, 
+            IGetBooksUseCase getBooksUseCase,
             IRemoveBookUseCase removeBookUseCase)
-        {            
+        {
             _createBookUseCase = createBookUseCase;
             _getBookUseCase = getBookUseCase;
             _getBooksUseCase = getBooksUseCase;
             _removeBookUseCase = removeBookUseCase;
         }
 
-        [Theory]        
+        [Theory]
         [InlineData("Livro 9", "Letras vivas", 9, "1975", 19.90)]
         [InlineData("Livro 753", "Puc Editora", 753, "1996", 16.55)]
         [InlineData("Livro 25", "Vida", 25, "2019", 152.25)]
         public async Task Should_CreateBookUseCase(string title, string publishingCompany, int edition, string publicationYear, decimal price)
         {
             CreateBookRequest createBookRequest = new CreateBookRequest()
-            {                
+            {
                 Title = title,
                 PublishingCompany = publishingCompany,
                 Edition = edition,
@@ -46,7 +46,7 @@ namespace Library.Tests.Integration.UseCases
                 Price = price
             };
 
-            await _createBookUseCase.Execute(createBookRequest);            
+            await _createBookUseCase.Execute(createBookRequest);
 
             var books = await _getBooksUseCase.Execute();
             books.Should().NotBeNull();
@@ -56,7 +56,7 @@ namespace Library.Tests.Integration.UseCases
 
             var existentBook = await _getBookUseCase.Execute(book.Id);
             existentBook.Should().NotBeNull();
-            existentBook.Should().BeEquivalentTo(book);            
+            existentBook.Should().BeEquivalentTo(book);
 
             await _removeBookUseCase.Execute(new RemoveBookRequest() { Id = existentBook.Id });
 

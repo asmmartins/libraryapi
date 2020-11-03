@@ -10,23 +10,23 @@ namespace Library.UseCases.RemoveBook
 {
     public class RemoveBookUseCase : IRemoveBookUseCase
     {
-        private readonly IRepository<Book> _bookRepository;        
+        private readonly IRepository<Book> _bookRepository;
 
         public RemoveBookUseCase(
             IRepository<Book> bookRepository)
         {
-            _bookRepository = bookRepository;            
+            _bookRepository = bookRepository;
         }
 
         public async Task Execute(RemoveBookRequest RemoveBookRequest)
         {
             Validate(RemoveBookRequest);
-            
+
             var existentBook = await GetBookById(RemoveBookRequest.Id);
 
-            if (existentBook == null)            
-                throw new ArgumentException("Book not found");            
-            
+            if (existentBook == null)
+                throw new ArgumentException("Book not found");
+
             await _bookRepository.Remove(existentBook);
         }
 
@@ -37,7 +37,7 @@ namespace Library.UseCases.RemoveBook
 
             var validator = new RemoveBookRequestValidator();
             validator.ValidateAndThrow(RemoveBookRequest);
-        }    
+        }
 
         private async Task<Book> GetBookById(Guid id)
         {

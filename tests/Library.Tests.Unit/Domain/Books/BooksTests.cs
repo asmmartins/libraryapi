@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
 using FluentValidation;
+using Library.Domain.Authors;
+using Library.Domain.Subjects;
 using Library.Tests.Unit.Shared;
+using System.Collections.Generic;
 using Xunit;
 using BookDomain = Library.Domain.Books;
-using Library.Domain.Subjects;
-using Library.Domain.Authors;
-using System.Collections.Generic;
 
 namespace Library.Tests.Unit.Domain.Books
 {
@@ -33,7 +33,7 @@ namespace Library.Tests.Unit.Domain.Books
 
         [Theory]
         [InlineData(null, "'Edition' deve ser informado.")]
-        [InlineData(0, "'Edition' deve ser informado.")]        
+        [InlineData(0, "'Edition' deve ser informado.")]
         public void Shouldnot_CreatBook_WithEditionInvalid(int edition, string errorMessage)
         {
             ValidationException ex = Assert.Throws<ValidationException>(() => BookDomain.Book.Create("Livro 1", "Casa do Saber", edition, null, 00.00m, new List<Subject>(), new List<Author>()));

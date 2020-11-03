@@ -22,7 +22,7 @@ namespace Library.Repository.Shared
 
         public void Remove(PublicSchool PublicSchool)
         {
-            publicSchools.Remove(PublicSchool);            
+            publicSchools.Remove(PublicSchool);
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Library.Domain.Groups;
 using Library.Domain.Shared;
 using Library.Repository.Shared;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Library.Repository.Groups
@@ -29,6 +31,11 @@ namespace Library.Repository.Groups
         public async Task Remove(Group aggregation)
         {
             _context.Remove(aggregation);
+        }
+
+        public async Task<Group> GetById(Guid id)
+        {
+            return _context.GetAll().FirstOrDefault(x => x.Id == id);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Library.Domain.Subjects
             var subject = new Subject()
             {
                 Id = Guid.NewGuid(),
-                Description = description?.Trim(),                
+                Description = description?.Trim(),
             };
 
             Validate(subject);

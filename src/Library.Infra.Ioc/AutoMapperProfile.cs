@@ -35,7 +35,7 @@ namespace Library.Infra.Ioc
         {
             CreateMap<PublicSchool, GetPublicSchoolResponse>();
 
-            CreateMap<PublicSchool, PublicSchoolDto>();                
+            CreateMap<PublicSchool, PublicSchoolDto>();
         }
 
         private void CreateGroupMap()

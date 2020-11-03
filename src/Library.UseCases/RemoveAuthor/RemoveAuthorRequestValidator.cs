@@ -6,9 +6,9 @@ namespace Library.UseCases.RemoveAuthor
     public class RemoveAuthorRequestValidator : AbstractValidator<RemoveAuthorRequest>
     {
         public RemoveAuthorRequestValidator()
-        {            
+        {
             AddIdRules();
-        }        
+        }
 
         private void AddIdRules()
         {

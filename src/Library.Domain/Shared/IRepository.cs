@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Library.Domain.Shared
@@ -8,5 +9,6 @@ namespace Library.Domain.Shared
         Task Save(T aggregation);
         Task<IEnumerable<T>> GetAll();
         Task Remove(T aggregation);
+        Task<T> GetById(Guid id);
     }
 }

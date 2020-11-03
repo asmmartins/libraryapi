@@ -4,7 +4,6 @@ using Library.Application.UseCases.Shared.Dtos;
 using Library.Domain.Books;
 using Library.Domain.Shared;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Library.UseCases.GetBook
@@ -24,14 +23,8 @@ namespace Library.UseCases.GetBook
 
         public async Task<BookDto> Execute(Guid id)
         {
-            var book = await GetBookById(id);
+            var book = await _bookRepository.GetById(id);
             return _mapper.Map<BookDto>(book);
-        }
-
-        private async Task<Book> GetBookById(Guid id)
-        {
-            var books = await _bookRepository.GetAll();
-            return books?.FirstOrDefault(x => x.Id == id);
         }
     }
 }

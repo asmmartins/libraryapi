@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Library.Application.UseCases.CreatePublicSchool;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Library.Application.UseCases.CreatePublicSchool;
 using System.Threading.Tasks;
 
 namespace Library.Api.Controllers

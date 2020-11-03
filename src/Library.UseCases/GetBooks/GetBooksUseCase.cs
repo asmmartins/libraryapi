@@ -3,7 +3,6 @@ using Library.Application.UseCases.GetBooks;
 using Library.Application.UseCases.Shared.Dtos;
 using Library.Domain.Books;
 using Library.Domain.Shared;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -26,6 +25,6 @@ namespace Library.UseCases.GetBooks
         {
             var books = await _bookRepository.GetAll();
             return _mapper.Map<IEnumerable<BookDto>>(books);
-        }        
+        }
     }
 }

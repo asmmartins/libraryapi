@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Library.Application.UseCases.CreateSubject;
-using Library.Domain.Subjects;
 using Library.Domain.Shared;
+using Library.Domain.Subjects;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,18 +10,18 @@ namespace Library.UseCases.CreateSubject
 {
     public class CreateSubjectUseCase : ICreateSubjectUseCase
     {
-        private readonly IRepository<Subject> _subjectRepository;        
+        private readonly IRepository<Subject> _subjectRepository;
 
         public CreateSubjectUseCase(
             IRepository<Subject> subjectRepository)
         {
-            _subjectRepository = subjectRepository;            
+            _subjectRepository = subjectRepository;
         }
 
         public async Task Execute(CreateSubjectRequest createSubjectRequest)
         {
             Validate(createSubjectRequest);
-            
+
             var existentSubject = await GetSubjectByName(createSubjectRequest.Description);
 
             if (existentSubject == null)
@@ -42,7 +42,7 @@ namespace Library.UseCases.CreateSubject
 
             var validator = new CreateSubjectRequestValidator();
             validator.ValidateAndThrow(createSubjectRequest);
-        }    
+        }
 
         private async Task<Subject> GetSubjectByName(string name)
         {

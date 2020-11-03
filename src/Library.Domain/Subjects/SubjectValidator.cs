@@ -7,7 +7,7 @@ namespace Library.Domain.Subjects
         public SubjectValidator()
         {
             AddIdRules();
-            AddDescriptionRules();            
+            AddDescriptionRules();
         }
 
         private void AddIdRules()
@@ -22,6 +22,6 @@ namespace Library.Domain.Subjects
             RuleFor(subject => subject.Description).NotEmpty();
             RuleFor(subject => subject.Description).MinimumLength(1);
             RuleFor(subject => subject.Description).MaximumLength(20);
-        }        
+        }
     }
 }

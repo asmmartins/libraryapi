@@ -1,16 +1,16 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Library.Domain.Authors;
+using Library.Domain.Books;
 using Library.Domain.Groups;
 using Library.Domain.PublicSchools;
 using Library.Domain.Shared;
+using Library.Domain.Subjects;
+using Library.Repository.Authors;
+using Library.Repository.Books;
 using Library.Repository.Groups;
 using Library.Repository.PublicSchools;
 using Library.Repository.Shared;
-using Library.Repository.Authors;
-using Library.Domain.Authors;
-using Library.Domain.Subjects;
 using Library.Repository.Subjects;
-using Library.Domain.Books;
-using Library.Repository.Books;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Library.Infra.Ioc
 {

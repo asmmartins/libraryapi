@@ -22,7 +22,7 @@ namespace Library.Repository.Shared
 
         public void Remove(Group Group)
         {
-            groups.Remove(Group);            
+            groups.Remove(Group);
         }
     }
 }

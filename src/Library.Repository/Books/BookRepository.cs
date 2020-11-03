@@ -2,6 +2,7 @@
 using Library.Domain.Shared;
 using Library.Repository.Shared;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace Library.Repository.Books
 
         public async Task Save(Book aggregation)
         {
-            var existent = await _context.Books.FirstOrDefaultAsync(x => x.Id == aggregation.Id);
+            var existent = await GetById(aggregation.Id);
 
             if (existent == null)
                 _context.Books.Add(aggregation);
@@ -35,8 +36,13 @@ namespace Library.Repository.Books
 
         public async Task Remove(Book aggregation)
         {
-            _context.Books.Remove(aggregation);            
+            _context.Books.Remove(aggregation);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Book> GetById(Guid id)
+        {
+            return await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

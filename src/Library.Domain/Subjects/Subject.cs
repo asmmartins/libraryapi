@@ -1,5 +1,4 @@
-﻿using Library.Domain.Books;
-using Library.Domain.BookSubjects;
+﻿using Library.Domain.BookSubjects;
 using Library.Domain.Shared;
 using System;
 using System.Collections.Generic;

@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
-using Newtonsoft.Json;
 using Library.Application.UseCases.CreateGroup;
 using Library.Application.UseCases.CreatePublicSchool;
 using Library.Application.UseCases.GetPublicSchool;
 using Library.Application.UseCases.Shared.Dtos;
 using Library.Domain.Shared.Extensions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;

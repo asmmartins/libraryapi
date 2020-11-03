@@ -4,7 +4,6 @@ using Library.Application.UseCases.Shared.Dtos;
 using Library.Domain.Authors;
 using Library.Domain.Shared;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Library.UseCases.GetAuthor
@@ -24,14 +23,8 @@ namespace Library.UseCases.GetAuthor
 
         public async Task<AuthorDto> Execute(Guid id)
         {
-            var Author = await GetAuthorById(id);
+            var Author = await _authorRepository.GetById(id);
             return _mapper.Map<AuthorDto>(Author);
-        }
-
-        private async Task<Author> GetAuthorById(Guid id)
-        {
-            var authors = await _authorRepository.GetAll();
-            return authors?.FirstOrDefault(ps => ps.Id == id);
         }
     }
 }

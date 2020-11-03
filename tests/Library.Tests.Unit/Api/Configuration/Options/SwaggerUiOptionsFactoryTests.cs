@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Microsoft.Extensions.Configuration;
 using Library.Api.Configuration.Options;
+using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Linq;
 using Xunit;

@@ -17,7 +17,13 @@ namespace Library.Domain.Subjects
             Validate(subject);
 
             return subject;
-        }       
+        }
+
+        public void Update(string description)
+        {
+            Description = description?.Trim();
+            Validate(this);
+        }
 
         private static void Validate(Subject subject)
         {

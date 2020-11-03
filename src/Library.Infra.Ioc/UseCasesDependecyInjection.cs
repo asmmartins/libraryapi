@@ -17,6 +17,12 @@ using Library.Application.UseCases.GetAuthor;
 using Library.Application.UseCases.GetAuthors;
 using Library.UseCases.GetAuthor;
 using Library.UseCases.GetAuthors;
+using Library.Application.UseCases.GetSubjects;
+using Library.UseCases.GetSubjects;
+using Library.UseCases.GetSubject;
+using Library.Application.UseCases.GetSubject;
+using Library.Application.UseCases.CreateSubject;
+using Library.UseCases.CreateSubject;
 
 namespace Library.Infra.Ioc
 {
@@ -34,6 +40,10 @@ namespace Library.Infra.Ioc
             services.AddTransient<ICreateAuthorUseCase, CreateAuthorUseCase>();
             services.AddTransient<IGetAuthorUseCase, GetAuthorUseCase>();
             services.AddTransient<IGetAuthorsUseCase, GetAuthorsUseCase>();
+
+            services.AddTransient<ICreateSubjectUseCase, CreateSubjectUseCase>();
+            services.AddTransient<IGetSubjectUseCase, GetSubjectUseCase>();
+            services.AddTransient<IGetSubjectsUseCase, GetSubjectsUseCase>();
         }
     }
 }

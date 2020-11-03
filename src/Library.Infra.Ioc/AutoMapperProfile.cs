@@ -5,6 +5,7 @@ using Library.Domain.Authors;
 using Library.Domain.Groups;
 using Library.Domain.PublicSchools;
 using Library.Domain.Shared.ValueObjects.Addresses;
+using Library.Domain.Subjects;
 
 namespace Library.Infra.Ioc
 {
@@ -16,6 +17,7 @@ namespace Library.Infra.Ioc
             CreateAddressMap();
             CreateGroupMap();
             CreateAuthorMap();
+            CreateSubjectMap();
         }
 
         private void CreateAddressMap()
@@ -38,6 +40,11 @@ namespace Library.Infra.Ioc
         private void CreateAuthorMap()
         {
             CreateMap<Author, AuthorDto>();
+        }
+
+        private void CreateSubjectMap()
+        {
+            CreateMap<Subject, SubjectDto>();
         }
     }
 }

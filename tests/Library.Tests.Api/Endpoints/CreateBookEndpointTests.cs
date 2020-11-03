@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Library.Application.UseCases.CreateGroup;
+using Library.Application.UseCases.CreateAuthor;
 using Library.Application.UseCases.CreateBook;
 using Library.Application.UseCases.Shared.Dtos;
 using Library.Domain.Shared.Extensions;
@@ -25,6 +25,8 @@ namespace Library.Tests.Api.Endpoints
         [InlineData("Livro 25", "Vida", 25, "2019", 152.25)]
         public async Task Should_CreateBookController_Returns204(string title, string publishingCompany, int edition, string publicationYear, decimal price)
         {
+            await Should_CreateAuthor_Returns204();
+
             CreateBookRequest createBookRequest = new CreateBookRequest()
             {
                 Title = title,
@@ -82,54 +84,55 @@ namespace Library.Tests.Api.Endpoints
             content.Should().NotBeNull();            
         }
 
-        private async Task Should_CreateGroupInSchool_Returns204(string inep)
+        private async Task Should_CreateAuthor_Returns204()
         {
-            CreateGroupRequest createGroupRequest = new CreateGroupRequest()
-            {
-                Inep = inep,
+            CreateAuthorRequest createAuthorRequest = new CreateAuthorRequest()
+            {                
                 Name = "Escola Novo Amanhã",
             };
 
-            var route = $"public-schools/{inep}/groups";
+            var route = $"authors";
 
             // Acts
             var client = await _testHost.GetClientAsync();
-            var stringContent = createGroupRequest.ToJsonContent();
+            var stringContent = createAuthorRequest.ToJsonContent();
             var response = await client.PostAsync(route, stringContent);
 
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.NoContent);
-        }                
 
-        private async Task Should_GetGroupsFromBook_Returns200(string inep)
+            await Should_GetAuthors_Returns200();
+        }
+
+        private async Task Should_GetAuthors_Returns200()
         {
-            var route = $"public-schools/{inep}/groups";
+            var route = $"authors";
 
             // Acts
             var client = await _testHost.GetClientAsync();
             var response = await client.GetAsync(route);
 
             var json = await response.Content.ReadAsStringAsync();
-            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<IEnumerable<GroupDto>>(json) : null;
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<IEnumerable<AuthorDto>>(json) : null;
 
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             content.Should().NotBeNull();
+            content.Should().OnlyHaveUniqueItems();
 
-            foreach (var c in content)
-                await Should_GetGroupFromId_Returns200(c.Id);
+            await Should_GetAuthor_Returns200(content.FirstOrDefault().Id);
         }
 
-        private async Task Should_GetGroupFromId_Returns200(Guid id)
+        private async Task Should_GetAuthor_Returns200(Guid id)
         {
-            var route = $"groups/{id}";
+            var route = $"authors/{id}";
 
             // Acts
             var client = await _testHost.GetClientAsync();
             var response = await client.GetAsync(route);
 
             var json = await response.Content.ReadAsStringAsync();
-            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<GroupDto>(json) : null;
+            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<AuthorDto>(json) : null;
 
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.OK);

@@ -57,6 +57,6 @@ namespace Library.UseCases.CreateBook
 
             var books = await _BookRepository.GetAll();
             return books?.FirstOrDefault(book => book.Id == id.Value);
-        }
+        }        
     }
 }

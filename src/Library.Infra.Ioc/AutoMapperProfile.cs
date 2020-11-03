@@ -2,6 +2,9 @@
 using Library.Application.UseCases.GetPublicSchool;
 using Library.Application.UseCases.Shared.Dtos;
 using Library.Domain.Authors;
+using Library.Domain.BookAuthors;
+using Library.Domain.Books;
+using Library.Domain.BookSubjects;
 using Library.Domain.Groups;
 using Library.Domain.PublicSchools;
 using Library.Domain.Shared.ValueObjects.Addresses;
@@ -18,6 +21,9 @@ namespace Library.Infra.Ioc
             CreateGroupMap();
             CreateAuthorMap();
             CreateSubjectMap();
+            CreateBookMap();
+            CreateBookAuthorMap();
+            CreateBookSubjectMap();
         }
 
         private void CreateAddressMap()
@@ -45,6 +51,21 @@ namespace Library.Infra.Ioc
         private void CreateSubjectMap()
         {
             CreateMap<Subject, SubjectDto>();
+        }
+
+        private void CreateBookMap()
+        {
+            CreateMap<Book, BookDto>();
+        }
+
+        private void CreateBookAuthorMap()
+        {
+            CreateMap<BookAuthor, AuthorDto>();
+        }
+
+        private void CreateBookSubjectMap()
+        {
+            CreateMap<BookSubject, SubjectDto>();
         }
     }
 }

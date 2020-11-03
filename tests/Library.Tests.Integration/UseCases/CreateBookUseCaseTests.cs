@@ -1,6 +1,9 @@
 ﻿using FluentAssertions;
 using FluentValidation;
 using Library.Application.UseCases.CreateBook;
+using Library.Application.UseCases.GetBook;
+using Library.Application.UseCases.GetBooks;
+using Library.Application.UseCases.RemoveBook;
 using Library.Tests.Integration.Shared;
 using System;
 using System.Linq;
@@ -12,20 +15,20 @@ namespace Library.Tests.Integration.UseCases
     public class CreateBookUseCaseTests
     {        
         private readonly ICreateBookUseCase _createBookUseCase;
-        /*private readonly IGetBookUseCase _getBookUseCase;
+        private readonly IGetBookUseCase _getBookUseCase;
         private readonly IGetBooksUseCase _getBooksUseCase;
-        private readonly IRemoveBookUseCase _removeBookUseCase;*/
+        private readonly IRemoveBookUseCase _removeBookUseCase;
 
         public CreateBookUseCaseTests(            
-            ICreateBookUseCase createBookUseCase
-            /*IGetBookUseCase getBookUseCase,
+            ICreateBookUseCase createBookUseCase,
+            IGetBookUseCase getBookUseCase,
             IGetBooksUseCase getBooksUseCase, 
-            IRemoveBookUseCase removeBookUseCase*/)
+            IRemoveBookUseCase removeBookUseCase)
         {            
             _createBookUseCase = createBookUseCase;
-            /*_getBookUseCase = getBookUseCase;
+            _getBookUseCase = getBookUseCase;
             _getBooksUseCase = getBooksUseCase;
-            _removeBookUseCase = removeBookUseCase;*/
+            _removeBookUseCase = removeBookUseCase;
         }
 
         [Theory]        
@@ -45,20 +48,20 @@ namespace Library.Tests.Integration.UseCases
 
             await _createBookUseCase.Execute(createBookRequest);            
 
-            /*var Books = await _getBooksUseCase.Execute();
-            Books.Should().NotBeNull();
-            Books.Should().OnlyHaveUniqueItems();
+            var books = await _getBooksUseCase.Execute();
+            books.Should().NotBeNull();
+            books.Should().OnlyHaveUniqueItems();
 
-            var Book = Books.FirstOrDefault(x => x.Name.ToLower() == createBookRequest.Name.ToLower());
+            var book = books.FirstOrDefault(x => x.Title.ToLower() == createBookRequest.Title.ToLower());
 
-            var existentBook = await _getBookUseCase.Execute(Book.Id);
+            var existentBook = await _getBookUseCase.Execute(book.Id);
             existentBook.Should().NotBeNull();
-            existentBook.Should().BeEquivalentTo(Book);            
+            existentBook.Should().BeEquivalentTo(book);            
 
             await _removeBookUseCase.Execute(new RemoveBookRequest() { Id = existentBook.Id });
 
-            existentBook = await _getBookUseCase.Execute(Book.Id);
-            existentBook.Should().BeNull();*/            
+            existentBook = await _getBookUseCase.Execute(book.Id);
+            existentBook.Should().BeNull();
         }
 
         [Fact]

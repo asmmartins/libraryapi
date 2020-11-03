@@ -1,11 +1,11 @@
 using AutoMapper;
+using Library.Api.Configuration.Extensions;
+using Library.Infra.Ioc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
-using Library.Api.Configuration.Extensions;
-using Library.Infra.Ioc;
 
 namespace Library.Api
 {

@@ -47,6 +47,13 @@ Task("Build")
 	 DotNetCoreBuild(PROJECT_SOLUTION, projectsBuildSettings);
 });
 
+Task("Update-Database")
+	.IsDependentOn("Build")
+	.Does(() =>
+{
+	DotNetCoreTool("./src/Library.Repository/Library.Repository.csproj", "ef database update");		
+});
+
 Task("Tests")
     .IsDependentOn("Build")
     .Does(() =>

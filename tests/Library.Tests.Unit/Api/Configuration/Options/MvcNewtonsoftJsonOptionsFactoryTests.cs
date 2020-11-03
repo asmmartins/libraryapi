@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
+using Library.Api.Configuration.Options;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Library.Api.Configuration.Options;
 using System.Linq;
 using Xunit;
 

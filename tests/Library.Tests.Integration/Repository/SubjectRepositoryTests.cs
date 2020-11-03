@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Library.Domain.Subjects;
 using Library.Domain.Shared;
+using Library.Domain.Subjects;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -19,7 +19,7 @@ namespace Library.Tests.Integration.Repository
         [Theory]
         [InlineData("Romance")]
         [InlineData("Poesia")]
-        [InlineData("Drama")]        
+        [InlineData("Drama")]
         public async Task Should_SaveAndGetAllSubjectInDbContext(string name)
         {
             var subject = Subject.Create(name);

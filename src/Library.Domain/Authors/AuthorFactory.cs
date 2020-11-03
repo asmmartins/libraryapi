@@ -11,13 +11,19 @@ namespace Library.Domain.Authors
             var author = new Author()
             {
                 Id = Guid.NewGuid(),
-                Name = name?.Trim(),                
+                Name = name?.Trim(),
             };
 
             Validate(author);
 
             return author;
-        }       
+        }
+
+        public void Update(string name)
+        {
+            Name = name?.Trim();
+            Validate(this);
+        }
 
         private static void Validate(Author author)
         {

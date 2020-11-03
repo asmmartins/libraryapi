@@ -19,8 +19,8 @@ namespace Library.Domain.BookSubjects
                     Subject = subject,
                     SubjectId = subject.Id
                 });
-            }            
+            }
             return bookSubjects;
-        }        
+        }
     }
 }

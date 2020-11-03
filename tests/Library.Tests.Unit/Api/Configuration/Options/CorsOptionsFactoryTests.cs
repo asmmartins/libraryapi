@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Library.Api.Configuration.Options;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Xunit;
 
 namespace Library.Tests.Unit.Api.Configuration.Options

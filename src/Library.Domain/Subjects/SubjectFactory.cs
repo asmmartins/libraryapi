@@ -11,13 +11,19 @@ namespace Library.Domain.Subjects
             var subject = new Subject()
             {
                 Id = Guid.NewGuid(),
-                Description = description?.Trim(),                
+                Description = description?.Trim(),
             };
 
             Validate(subject);
 
             return subject;
-        }       
+        }
+
+        public void Update(string description)
+        {
+            Description = description?.Trim();
+            Validate(this);
+        }
 
         private static void Validate(Subject subject)
         {

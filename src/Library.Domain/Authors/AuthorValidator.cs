@@ -7,7 +7,7 @@ namespace Library.Domain.Authors
         public AuthorValidator()
         {
             AddIdRules();
-            AddNameRules();            
+            AddNameRules();
         }
 
         private void AddIdRules()
@@ -22,6 +22,6 @@ namespace Library.Domain.Authors
             RuleFor(author => author.Name).NotEmpty();
             RuleFor(author => author.Name).MinimumLength(1);
             RuleFor(author => author.Name).MaximumLength(40);
-        }        
+        }
     }
 }

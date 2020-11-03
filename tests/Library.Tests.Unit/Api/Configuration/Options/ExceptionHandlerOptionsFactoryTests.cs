@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Microsoft.AspNetCore.Http;
 using Library.Api.Configuration.Options;
+using Microsoft.AspNetCore.Http;
 using System.Net.Mime;
 using Xunit;
 

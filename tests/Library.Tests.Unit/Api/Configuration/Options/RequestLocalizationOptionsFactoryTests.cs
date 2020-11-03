@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
+using Library.Api.Configuration.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
-using Library.Api.Configuration.Options;
 using System.Collections.Generic;
 using System.Globalization;
 using Xunit;

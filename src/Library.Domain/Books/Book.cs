@@ -17,7 +17,7 @@ namespace Library.Domain.Books
 
         public List<BookAuthor> BookAuthors { get; private set; }
 
-        public List<BookSubject> BookSubjects { get; private set; }        
+        public List<BookSubject> BookSubjects { get; private set; }
 
         protected Book() { }
     }

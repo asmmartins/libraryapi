@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Library.Infra.Ioc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Library.Infra.Ioc;
 using System.Reflection;
 using Xunit.Abstractions;
 using Xunit.DependencyInjection;

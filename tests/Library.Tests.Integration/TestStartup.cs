@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using Library.Infra.Ioc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Library.Infra.Ioc;
 using System.IO;
 using System.Reflection;
 using Xunit.Abstractions;

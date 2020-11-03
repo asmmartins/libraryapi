@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Library.Api.Configuration.Options;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Library.Api.Configuration.Options;
 
 namespace Library.Api.Configuration.Extensions
 {

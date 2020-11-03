@@ -31,7 +31,7 @@ namespace Library.Repository.Books
 
         public async Task<IEnumerable<Book>> GetAll()
         {
-            return await _context.Books.ToListAsync();
+            return await _context.Books.Include(x => x.BookAuthors).Include(x => x.BookSubjects).ToListAsync();
         }
 
         public async Task Remove(Book aggregation)
@@ -42,7 +42,7 @@ namespace Library.Repository.Books
 
         public async Task<Book> GetById(Guid id)
         {
-            return await _context.Books.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Books.Include(x => x.BookAuthors).Include(x => x.BookSubjects).FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

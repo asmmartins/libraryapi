@@ -5,6 +5,7 @@ using Library.Application.UseCases.GetAuthor;
 using Library.Application.UseCases.GetAuthors;
 using Library.Application.UseCases.GetBook;
 using Library.Application.UseCases.GetBooks;
+using Library.Application.UseCases.GetBooksAuthors;
 using Library.Application.UseCases.GetSubject;
 using Library.Application.UseCases.GetSubjects;
 using Library.Application.UseCases.RemoveAuthor;
@@ -17,6 +18,7 @@ using Library.UseCases.GetAuthor;
 using Library.UseCases.GetAuthors;
 using Library.UseCases.GetBook;
 using Library.UseCases.GetBooks;
+using Library.UseCases.GetBooksAuthors;
 using Library.UseCases.GetSubject;
 using Library.UseCases.GetSubjects;
 using Library.UseCases.RemoveAuthor;
@@ -44,6 +46,8 @@ namespace Library.Infra.Ioc
             services.AddTransient<IGetBookUseCase, GetBookUseCase>();
             services.AddTransient<IGetBooksUseCase, GetBooksUseCase>();
             services.AddTransient<IRemoveBookUseCase, RemoveBookUseCase>();
+
+            services.AddTransient<IGetBooksAuthorsUseCase, GetBooksAuthorsUseCase>();
         }
     }
 }

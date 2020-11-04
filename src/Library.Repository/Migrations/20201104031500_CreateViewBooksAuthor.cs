@@ -7,7 +7,7 @@ namespace Library.Repository.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql(@"CREATE VIEW [dbo].[BooksAuthor] AS SELECT A.Name AS AuthorName, COUNT(BA.BookId) AS Books FROM [dbo].[BookAuthor] AS BA INNER JOIN [dbo].[Books] AS B ON B.Id = BA.BookId INNER JOIN [dbo].[Authors] AS A ON A.Id = BA.AuthorId GROUP BY A.Name;");
+            migrationBuilder.Sql(@"CREATE VIEW [dbo].[BooksAuthor] AS SELECT A.Id, A.Name AS AuthorName, COUNT(BA.BookId) AS Books FROM [dbo].[BookAuthor] AS BA INNER JOIN [dbo].[Books] AS B ON B.Id = BA.BookId INNER JOIN [dbo].[Authors] AS A ON A.Id = BA.AuthorId GROUP BY A.Id, A.Name;");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

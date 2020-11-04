@@ -1,3 +1,9 @@
+### Introdução
+
+Library API contém os recursos necessários para gerenciar uma biblioteca.
+
+Documentação: https://asmlibraryapi.azurewebsites.net/swagger/index.html
+
 #### Arquitetura
 
 A arquitetura proposta se baseia no conceito hexagonal. Fazendo que seja separado o que é uma "abstração" de uma "implementação".

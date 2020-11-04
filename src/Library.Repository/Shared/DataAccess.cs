@@ -1,10 +1,9 @@
-﻿using Library.Domain.Shared;
+﻿using Dapper;
+using Library.Domain.Shared;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Dapper;
-using Microsoft.Data.SqlClient;
-using System.Linq;
 
 namespace Library.Repository.Shared
 {
@@ -23,7 +22,7 @@ namespace Library.Repository.Shared
 
             using var connection = new SqlConnection(_configuration.GetConnectionString("LibraryDbContext"));
 
-            return await connection.QueryAsync<T>(sql);            
+            return await connection.QueryAsync<T>(sql);
         }
     }
 }

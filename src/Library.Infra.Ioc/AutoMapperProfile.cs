@@ -42,12 +42,12 @@ namespace Library.Infra.Ioc
         }
 
         private void CreateBookAuthorMap()
-        {            
+        {
             CreateMap<BookAuthor, BookAuthorDto>();
         }
 
         private void CreateBookSubjectMap()
-        {            
+        {
             CreateMap<BookSubject, BookSubjectDto>();
         }
     }

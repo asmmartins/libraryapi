@@ -8,7 +8,7 @@ namespace Library.UseCases.GetBooksAuthors
     public class GetBooksAuthorsUseCase : IGetBooksAuthorsUseCase
     {
         private readonly IDataAccess _dataAccess;
-        
+
         public GetBooksAuthorsUseCase(IDataAccess dataAccess)
         {
             _dataAccess = dataAccess;

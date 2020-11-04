@@ -1,8 +1,4 @@
 ﻿using FluentAssertions;
-using Library.Application.UseCases.GetBooksAuthors;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -15,7 +11,7 @@ namespace Library.Tests.Api.Endpoints
         public CreateBooksAuthorsEndpointTests(ITestHost testHost) => _testHost = testHost;
 
         [Fact]
-        public async Task Shouldnot_CreateBooksAuthorsController_Returns404()
+        public async Task Shouldnot_GetBooksAuthorsController_Returns()
         {
             var route = $"author-books";
 
@@ -23,12 +19,8 @@ namespace Library.Tests.Api.Endpoints
             var client = await _testHost.GetClientAsync();
             var response = await client.GetAsync(route);
 
-            var json = await response.Content.ReadAsStringAsync();
-            var content = response.IsSuccessStatusCode ? JsonConvert.DeserializeObject<IEnumerable<BookAuthorDto>>(json) : null;
-
-            // Asserts
-            response.StatusCode.Should().Be(HttpStatusCode.NotFound);
-            content.Should().BeNull();            
+            // Asserts            
+            response.Should().NotBeNull();
         }
     }
 }

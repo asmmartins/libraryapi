@@ -3,8 +3,7 @@
 namespace Library.Application.UseCases.Shared.Dtos
 {
     public class BookSubjectDto
-    {        
+    {
         public Guid SubjectId { get; set; }
-        public SubjectDto Subject { get; set; }
     }
 }

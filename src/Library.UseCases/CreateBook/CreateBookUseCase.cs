@@ -72,7 +72,7 @@ namespace Library.UseCases.CreateBook
                 return subjects;
 
             foreach (var subjectId in subjectIds)
-            {                
+            {
                 var subject = await _subjectRepository.GetById(subjectId);
                 if (subject != null)
                     subjects.Add(subject);
@@ -85,8 +85,8 @@ namespace Library.UseCases.CreateBook
         {
             var authors = new List<Author>();
 
-            if (!((authorIds != null) && authorIds.Any()))            
-                return authors;            
+            if (!((authorIds != null) && authorIds.Any()))
+                return authors;
 
             foreach (var authorId in authorIds)
             {

@@ -194,7 +194,7 @@ namespace Library.Tests.Api.Endpoints
 
             // Asserts
             response.StatusCode.Should().Be(HttpStatusCode.NoContent);
-            content.Should().BeNull();                      
+            content.Should().BeNull();
         }
 
         private async Task Should_RemoveSubject_Returns204(Guid id)
@@ -324,7 +324,7 @@ namespace Library.Tests.Api.Endpoints
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             content.Should().NotBeNull();
 
-            await Should_UpdateSubject_Returns204(id);            
+            await Should_UpdateSubject_Returns204(id);
         }
     }
 }

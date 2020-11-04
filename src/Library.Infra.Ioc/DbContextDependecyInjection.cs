@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Library.Infra.Ioc
 {
-    internal static class RepositoryDependecyInjection
+    internal static class DbContextDependecyInjection
     {
         public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {

@@ -9,9 +9,6 @@ namespace Library.Infra.Ioc
     {
         public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            /*services.AddDbContext<LibraryDbContext>(opt =>
-               opt.UseInMemoryDatabase("LibraryDb"));*/
-
             services.AddDbContext<LibraryDbContext>(opcoes => opcoes
                 .UseSqlServer(configuration.GetConnectionString("LibraryDbContext")));
         }

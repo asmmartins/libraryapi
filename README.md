@@ -40,6 +40,18 @@ Executar o script responsável por rodar todos os comandos das etapas necessárias
 
 Esse script irá executar os comandos de limpeza, restauração de dependências, construção, execução de testes e criação do pacote em projetos de componente, e caso esteja faltando alguma configuração no ambiente o processo irá indicar em qualquer uma dessas etapas.
 
+O projeto foi configurado para ter uma migrations que automatiza a criação da estutura de banco de dados.
+Acesse o Console Gerenciador de Pacotes para o project Library.Repository e execute o comando de sua preferência.
+
+- CLI do .NET Core
+```
+dotnet ef database update
+```
+- Visual Studio
+```
+Update-Database
+```
+
 #### Padrões e práticas
 
 Para desenhar essa solução, foram consideradas as seguintes práticas e padrôes.

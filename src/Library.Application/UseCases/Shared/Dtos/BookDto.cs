@@ -11,7 +11,7 @@ namespace Library.Application.UseCases.Shared.Dtos
         public int Edition { get; set; }
         public string PublicationYear { get; set; }
         public decimal Price { get; set; }
-        public List<BookAuthorDto> Authors { get; set; }
-        public List<BookSubjectDto> Subjects { get; set; }
+        public List<BookAuthorDto> BookAuthors { get; set; }
+        public List<BookSubjectDto> BookSubjects { get; set; }
     }
 }

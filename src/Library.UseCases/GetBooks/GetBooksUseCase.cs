@@ -24,7 +24,7 @@ namespace Library.UseCases.GetBooks
         public async Task<IEnumerable<BookDto>> Execute()
         {
             var books = await _bookRepository.GetAll();
-            return _mapper.Map<IEnumerable<BookDto>>(books);
+            return _mapper.Map<IEnumerable<BookDto>>(books);            
         }
     }
 }

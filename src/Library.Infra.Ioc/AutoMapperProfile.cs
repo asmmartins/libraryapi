@@ -16,9 +16,9 @@ namespace Library.Infra.Ioc
             CreateAddressMap();
             CreateAuthorMap();
             CreateSubjectMap();
-            CreateBookMap();
             CreateBookAuthorMap();
             CreateBookSubjectMap();
+            CreateBookMap();            
         }
 
         private void CreateAddressMap()
@@ -38,7 +38,7 @@ namespace Library.Infra.Ioc
 
         private void CreateBookMap()
         {
-            CreateMap<Book, BookDto>();
+            CreateMap<Book, BookDto>();                               
         }
 
         private void CreateBookAuthorMap()
